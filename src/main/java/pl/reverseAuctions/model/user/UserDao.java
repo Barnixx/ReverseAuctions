@@ -1,9 +1,11 @@
 package pl.reverseAuctions.model.user;
 
+import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.Entity;
 
 import java.util.List;
 
+@Repository
 public class UserDao implements Entity<User> {
     @Override
     public void saveToDb(User model) {

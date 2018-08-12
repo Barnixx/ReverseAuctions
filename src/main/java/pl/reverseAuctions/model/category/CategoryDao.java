@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public class CategoryDao implements Entity<Category> {
+
     @Override
     public void saveToDb(Category model) {
 
