@@ -8,9 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/layout" %>
 
-<t:genericpage>
-    <jsp:body>
+<t:layout>
+    <p>Jakiś paragraf</p>
 
-    </jsp:body>
-
-</t:genericpage>
+</t:layout>

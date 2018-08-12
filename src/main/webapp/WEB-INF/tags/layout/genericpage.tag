@@ -1,4 +1,5 @@
-    <%@tag description="Page Template" pageEncoding="utf-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@tag description="Page Template" pageEncoding="utf-8" %>
         <%@attribute name="header" fragment="true" %>
         <%@attribute name="footer" fragment="true" %>
         <!doctype html>
@@ -11,8 +12,9 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href='<c:url value="/views/css/style.css"/>' type="text/css">
 
-        <title>Reverse Auction</title>
+        <title></title>
         </head>
         <body>
         <div id="pageHeader">
