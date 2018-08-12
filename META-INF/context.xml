@@ -6,7 +6,7 @@
               username="root"
               password="coderslab"
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/reverseAuction"
+              url="jdbc:mysql://localhost:3306/reverse_auction"
               connectionProperties="useUnicode=yes;characterEncoding=utf8;"
               maxTotal="100"
               maxIdle="30"

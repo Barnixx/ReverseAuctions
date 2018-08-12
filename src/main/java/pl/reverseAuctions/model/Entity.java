@@ -1,14 +1,15 @@
 package pl.reverseAuctions.model;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface Entity<T> {
 
-    void saveToDb(T model);
+    void saveToDb(T model) throws SQLException;
 
-    void delete(T model);
+    void delete(T model) throws SQLException;
 
-    List<T> getAll();
+    List<T> getAll() throws SQLException;
 
-    T getById(int id);
+    T getById(int id) throws SQLException;
 }
