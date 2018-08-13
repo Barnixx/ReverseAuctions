@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDao implements Entity<User> {
 
     private final String INSERT_QUERY = "INSERT INTO user(userLogin, userFirstName, userLastName, userBirth, userMail, userRole) VALUES (?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE user SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRole = ?, userStat = ? WHERE idUser = ?";
+    private final String UPDATE_QUERY = "UPDATE user SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRole = ? WHERE idUser = ?";
     private final String DELETE_QUERY = "DELETE FROM user WHERE idUser = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM user";
     private final String GET_BY_ID = "SELECT * FROM user WHERE idUser = ?";
@@ -56,7 +56,7 @@ public class UserDao implements Entity<User> {
                     } else {
                         preparedStatement.setNull(6, java.sql.Types.INTEGER);
                     }
-                    preparedStatement.setLong(8, model.getIdUser());
+                    preparedStatement.setLong(7, model.getIdUser());
                     preparedStatement.executeUpdate();
                 }
             }
@@ -77,7 +77,7 @@ public class UserDao implements Entity<User> {
             }
         }
     }
-    
+
     @Override
     public List<User> getAll() throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
