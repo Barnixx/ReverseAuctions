@@ -1,4 +1,4 @@
-package src.main.java.pl.reverseAuctions.model.userRole;
+package pl.reverseAuctions.model.userRole;
 
 public class UserRole {
 
