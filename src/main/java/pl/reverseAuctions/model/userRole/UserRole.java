@@ -8,8 +8,7 @@ public class UserRole {
     public UserRole() {
     }
 
-    public UserRole(Long id, String userRoleName) {
-        this.id = id;
+    public UserRole(String userRoleName) {
         this.userRoleName = userRoleName;
     }
 

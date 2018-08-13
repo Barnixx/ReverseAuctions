@@ -20,8 +20,6 @@ public class CategoryDao implements Entity<Category> {
     private final String GET_ALL_QUERY = "SELECT * FROM Category";
     private final String GET_BY_ID = "SELECT * FROM Category WHERE idCategory = ?";
 
-    CategoryDao categoryDao;
-
     @Override
     public void saveToDb(Category model) throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
