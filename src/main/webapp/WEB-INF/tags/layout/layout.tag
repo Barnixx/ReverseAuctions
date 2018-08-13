@@ -3,38 +3,63 @@
 
         <t:genericpage>
             <jsp:attribute name="header">
-                <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                <img src="#" width="30" height="30" class="d-inline-block align-top" alt="">
-                Reverse<br>
-                Auction
+                <div class="container-fluid border p-0">
+                <nav class="navbar navbar-expand-md navbar-light bg-light border p-10">
+                <a href="/" class="navbar-brand">Reverse Auction</a>
+                <div class="navbar-collapse mr-auto" id="navbarForm">
+                <ul class="navbar-nav ml-auto order-1">
+                <li class="nav-item dropdown mr-5">
+                <a class="nav-link" style="cursor: pointer; white-space: nowrap" id="userBarDropdown"
+                data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fa fa-user fa-lg" style="display: inline"></i>
+                Moje Konto
                 </a>
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                <form class="form-inline">
-                <input class="form-control" type="search" placeholder="Powiedz nam czego potrzebujesz">
-                <select class="form-control custom-select">
-                <option>Elektronika</option>
-                <option>Nieruchomości</option>
-                </select>
-                <button class="btn btn-primary">Szukaj</button>
-                </form>
-                </li>
-                </ul>
-                <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdownMenu" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Moje konto
-                </a>
-                <div class="dropdown-menu" aria-labelledby="userDropdownMenu">
+                <div class="dropdown-menu" aria-labelledby="userBarDropdown">
                 <a class="dropdown-item" href="#">Moje Aukcje</a>
                 <a class="dropdown-item" href="#">Moje Oferty</a>
-                <a class="dropdown-item" href="#">something</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">Ustawienia
+                <i class="fa fa-cog fa-lg ml-auto"></i>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="btn btn-warning rounded-0 w-100" href="/signIn">Zaloguj</a>
+                <a class="dropdown-item text-center pt-1" href="">Zarejstruj się</a>
                 </div>
                 </li>
+
                 </ul>
+                <form class="mx-2 my-auto d-inline w-100 order-0" method="GET" action="/searchAuction">
+                <div class="input-group">
+                <input type="text" class="form-control border rounded-0 w-auto" placeholder="Co dziś chcesz
+                zaoferować?">
+                <span class="input-group-append">
+                <select class="form-control border rounded-0">
+                <option>Elektronika
+                </option>
+                <option>Nieruchomości</option>
+                </select>
+                </span>
+                <span class="input-group-append">
+                <button class="btn btn-info border rounded-0 mh-100" style="height: 100%;"
+                type="submit">
+                <b>Szukaj</b>
+                </button>
+                </span>
+                </div>
+                </form>
+                </div>
+                </nav>
+                <nav class="navbar navbar-expand navbar-light m-0 border">
+                <div class="navbar m-0 p-0">
+                <ul class="navbar-nav m-0">
+                <li class="nav-item">
+                <a class="nav-link" style="cursor: pointer;">
+                Kategorie
+                </a>
+                </li>
+                </ul>
+                </div>
 
                 </nav>
                 </div>
@@ -96,40 +121,91 @@
                 }
 
                 @keyframes jssorl-003-oval {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
+                from {
+                transform: rotate(0deg);
+                }
+                to {
+                transform: rotate(360deg);
+                }
                 }
 
                 /*jssor slider bullet skin 031 css*/
-                .jssorb031 {position:absolute;}
-                .jssorb031 .i {position:absolute;cursor:pointer;}
-                .jssorb031 .i .b
-                {fill:#000;fill-opacity:0.5;stroke:#fff;stroke-width:1200;stroke-miterlimit:10;stroke-opacity:0.3;}
-                .jssorb031 .i:hover .b {fill:#fff;fill-opacity:.7;stroke:#000;stroke-opacity:.5;}
-                .jssorb031 .iav .b {fill:#fff;stroke:#000;fill-opacity:1;}
-                .jssorb031 .i.idn {opacity:.3;}
+                .jssorb031 {
+                position: absolute;
+                }
+
+                .jssorb031 .i {
+                position: absolute;
+                cursor: pointer;
+                }
+
+                .jssorb031 .i .b {
+                fill: #000;
+                fill-opacity: 0.5;
+                stroke: #fff;
+                stroke-width: 1200;
+                stroke-miterlimit: 10;
+                stroke-opacity: 0.3;
+                }
+
+                .jssorb031 .i:hover .b {
+                fill: #fff;
+                fill-opacity: .7;
+                stroke: #000;
+                stroke-opacity: .5;
+                }
+
+                .jssorb031 .iav .b {
+                fill: #fff;
+                stroke: #000;
+                fill-opacity: 1;
+                }
+
+                .jssorb031 .i.idn {
+                opacity: .3;
+                }
 
                 /*jssor slider arrow skin 051 css*/
-                .jssora051 {display:block;position:absolute;cursor:pointer;}
-                .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
-                .jssora051:hover {opacity:.8;}
-                .jssora051.jssora051dn {opacity:.5;}
-                .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+                .jssora051 {
+                display: block;
+                position: absolute;
+                cursor: pointer;
+                }
+
+                .jssora051 .a {
+                fill: none;
+                stroke: #fff;
+                stroke-width: 360;
+                stroke-miterlimit: 10;
+                }
+
+                .jssora051:hover {
+                opacity: .8;
+                }
+
+                .jssora051.jssora051dn {
+                opacity: .5;
+                }
+
+                .jssora051.jssora051ds {
+                opacity: .3;
+                pointer-events: none;
+                }
                 </style>
                 <div id="jssor_1" style="position:relative;margin:0
                 auto;top:0px;left:0px;width:1280px;height:300px;overflow:hidden;visibility:hidden;">
                 <!-- Loading Screen -->
                 <div data-u="loading" class="jssorl-003-oval"
                 style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/oval.svg" />
+                <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/oval.svg"/>
                 </div>
                 <div data-u="slides"
                 style="cursor:default;position:relative;top:0px;left:0px;width:1280px;height:300px;overflow:hidden;">
                 <div>
-                <img data-u="image" src="../../../views/img/image.png" />
+                <img data-u="image" src="../../../views/img/image.png"/>
                 </div>
                 <div>
-                <img data-u="image" src="../../../views/img/slide.jpg" />
+                <img data-u="image" src="../../../views/img/slide.jpg"/>
                 </div>
                 </div>
                 <!-- Bullet Navigator -->

@@ -9,6 +9,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/layout" %>
 
 <t:layout>
+	<!-- Twoja strona zaczyna się tutaj -->
     <p>Jakiś paragraf</p>
 
 </t:layout>
