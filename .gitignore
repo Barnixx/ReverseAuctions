@@ -2,3 +2,6 @@
 target/
 ReverseAuctions.iml
 .directory
+*.stackdump
+*.mwb
+*.bak

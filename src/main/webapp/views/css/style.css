@@ -1,25 +1,12 @@
-.navbar-nav {
-    float: none;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
+body {
+    background-color: #d4d4d4;
+    margin-top: 88px;
 }
 
-.navbar-nav > li {
-    display: inline-block;
-    float: none;
+a:hover {
+    text-decoration: none;
 }
 
-nav.navbar .form-control, nav.navbar .form-inline select {
-    border-radius: 0px;
-}
-
-input.form-control {
-    width: content-box;
-}
-
-nav.navbar .form-inline button {
-    border-radius: 0px;
-    background: cornflowerblue;
-    color: white;
+.userLoginPanel {
+    background-color: white;
 }
