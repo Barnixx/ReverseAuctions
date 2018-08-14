@@ -30,14 +30,14 @@
 		data-toggle="dropdown" aria-haspopup="true"
 		aria-expanded="false">
 		<i class="fa fa-user fa-lg" style="display: inline"></i>
-		Moje Konto
+		Moje Konto <i class="fas fa-angle-down pl-2"></i>
 		</a>
 		<div class="dropdown-menu" aria-labelledby="userBarDropdown">
 		<a class="dropdown-item" href="#">Moje Aukcje</a>
 		<a class="dropdown-item" href="#">Moje Oferty</a>
 		<div class="dropdown-divider"></div>
 		<a class="dropdown-item" href="">Ustawienia
-		<i class="fa fa-cog fa-lg ml-auto"></i>
+		<i class="fa fa-cog fa-lg pl-3 ml-auto"></i>
 		</a>
 		<div class="dropdown-divider"></div>
 		<a class="btn btn-warning rounded-0 text-secondary w-100" href="/signIn">Zaloguj</a>
@@ -81,8 +81,11 @@
 		</div>
 		<jsp:doBody/>
 		</div>
-		<div id="pageFooter">
-		<p id="copyright">Copyright 2018, Reverse Auction Sp. z. o o.</p>
+		<div id="pageFooter" class="footer">
+		<div class="d-flex justify-content-center">
+		
+		<p id="copyright" class="text-white m-0">Copyright 2018, Reverse Auction Sp. z. o o.</p>
+		</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

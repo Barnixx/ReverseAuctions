@@ -1,8 +1,21 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     background-color: #d4d4d4;
     margin-top: 88px;
+    margin-bottom: 50px;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Set the fixed height of the footer here */
+    line-height: 50px; /* Vertically center the text there */
+    background-color: #1f1f1f;
+}
 a:hover {
     text-decoration: none;
 }
