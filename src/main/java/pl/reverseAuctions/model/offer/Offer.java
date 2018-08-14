@@ -17,23 +17,13 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String title, String description, Double price, User user, Auction auction) {
+    public Offer(String title, String description, Double price, User user, Auction auction, String addTime) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.user = user;
         this.auction = auction;
-        this.addTime = LocalDateTime.now().toString();
-    }
-
-    public Offer(Long id, String title, String description, Double price, User user, Auction auction) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.user = user;
-        this.auction = auction;
-        this.addTime = LocalDateTime.now().toString();
+        this.addTime = addTime;
     }
 
     public Long getId() {

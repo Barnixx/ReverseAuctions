@@ -23,16 +23,6 @@ public class User {
         this.userRole = userRole;
     }
 
-    public User(Long idUser, String login, String firstName, String lastName, Date birth, String mail, UserRole userRole) {
-        this.idUser = idUser;
-        this.login = login;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birth = birth;
-        this.mail = mail;
-        this.userRole = userRole;
-    }
-
     public Long getIdUser() {
         return idUser;
     }
