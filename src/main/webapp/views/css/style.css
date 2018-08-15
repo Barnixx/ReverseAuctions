@@ -1,25 +1,25 @@
-.navbar-nav {
-    float: none;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    background-color: #d4d4d4;
+    margin-top: 88px;
+    margin-bottom: 50px;
 }
 
-.navbar-nav > li {
-    display: inline-block;
-    float: none;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Set the fixed height of the footer here */
+    line-height: 50px; /* Vertically center the text there */
+    background-color: #1f1f1f;
+}
+a:hover {
+    text-decoration: none;
 }
 
-nav.navbar .form-control, nav.navbar .form-inline select {
-    border-radius: 0px;
-}
-
-input.form-control {
-    width: content-box;
-}
-
-nav.navbar .form-inline button {
-    border-radius: 0px;
-    background: cornflowerblue;
-    color: white;
+.userLoginPanel {
+    background-color: white;
 }
