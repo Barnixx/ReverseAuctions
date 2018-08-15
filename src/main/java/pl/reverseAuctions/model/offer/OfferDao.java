@@ -3,6 +3,7 @@ package pl.reverseAuctions.model.offer;
 import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
+import pl.reverseAuctions.model.auction.AuctionDao;
 import pl.reverseAuctions.model.user.User;
 import pl.reverseAuctions.model.user.UserDao;
 
@@ -21,6 +22,9 @@ public class OfferDao implements Entity<Offer> {
     private final String DELETE_QUERY = "DELETE FROM offer WHERE idOffer = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM offer";
     private final String GET_BY_ID = "SELECT * FROM offer WHERE idOffer = ?";
+
+    UserDao userDao;
+    AuctionDao auctionDao;
 
     @Override
     public void saveToDb(Offer model) throws SQLException {
@@ -89,8 +93,8 @@ public class OfferDao implements Entity<Offer> {
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getInt("idUser")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getInt("idAuction")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                     offerList.add(loadedOffer);
                 }
@@ -113,8 +117,8 @@ public class OfferDao implements Entity<Offer> {
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getInt("idUser")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getInt("idAuction")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                 }
             }

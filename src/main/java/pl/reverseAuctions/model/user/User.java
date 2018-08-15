@@ -1,5 +1,7 @@
 package pl.reverseAuctions.model.user;
 
+import pl.reverseAuctions.model.userRole.UserRole;
+
 import java.sql.Date;
 
 public class User {
@@ -72,11 +74,11 @@ public class User {
     }
 
     public UserRole getUserRole() {
-        return idUserRole;
+        return userRole;
     }
 
-    public void setUserRole(UserRole idUserRole) {
-        this.idUserRole = idUserRole;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
 }

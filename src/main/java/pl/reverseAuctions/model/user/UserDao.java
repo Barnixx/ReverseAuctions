@@ -3,6 +3,8 @@ package pl.reverseAuctions.model.user;
 import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
+import pl.reverseAuctions.model.userRole.UserRoleDao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +20,8 @@ public class UserDao implements Entity<User> {
     private final String DELETE_QUERY = "DELETE FROM user WHERE idUser = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM user";
     private final String GET_BY_ID = "SELECT * FROM user WHERE idUser = ?";
+
+    UserRoleDao userRoleDao;
 
     @Override
     public void saveToDb(User model) throws SQLException {
