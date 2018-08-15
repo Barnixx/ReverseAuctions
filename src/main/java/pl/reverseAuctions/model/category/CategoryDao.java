@@ -60,7 +60,7 @@ public class CategoryDao implements Entity<Category> {
             try (ResultSet resultSet = conn.createStatement().executeQuery(GET_ALL_QUERY)){
                 while(resultSet.next()){
                     Category loadedCategory = new Category();
-                    loadedCategory.setId(resultSet.getLong("id"));
+                    loadedCategory.setId(resultSet.getLong("idCategory"));
                     loadedCategory.setCategoryName(resultSet.getString("categoryName"));
                     loadedCategory.setCategoryDescription(resultSet.getString("categoryDescription"));
                     categoryList.add(loadedCategory);
@@ -78,7 +78,7 @@ public class CategoryDao implements Entity<Category> {
                 preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
-                    loadedCategory.setId(resultSet.getLong("id"));
+                    loadedCategory.setId(resultSet.getLong("idCategory"));
                     loadedCategory.setCategoryName(resultSet.getString("categoryName"));
                     loadedCategory.setCategoryDescription(resultSet.getString("categoryDescription"));
                 }
