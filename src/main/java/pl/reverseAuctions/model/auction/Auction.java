@@ -11,27 +11,26 @@ public class Auction {
     private Long id;
     private String auctionName;
     private String auctionDescription;
-    private Subcategory Subcategory;
-    private User User;
+    private Subcategory subcategory;
+    private User user;
     private LocalDateTime auctionStartTime;
     private LocalDateTime auctionEndTime;
-    private boolean auctionIsActive;
+    private byte auctionIsActive;
     private Long auctionView;
     private Offer auctionWinOfferId;
 
     public Auction() {
     }
 
-    public Auction(Long id, String auctionName, String auctionDescription,
-                   pl.reverseAuctions.model.subcategory.Subcategory subcategory,
-                   pl.reverseAuctions.model.user.User user, LocalDateTime auctionStartTime,
-                   LocalDateTime auctionEndTime, boolean auctionIsActive,
+    public Auction(String auctionName, String auctionDescription,
+                   Subcategory subcategory,
+                   User user, LocalDateTime auctionStartTime,
+                   LocalDateTime auctionEndTime, byte auctionIsActive,
                    Long auctionView, Offer auctionWinOfferId) {
-        this.id = id;
         this.auctionName = auctionName;
         this.auctionDescription = auctionDescription;
-        Subcategory = subcategory;
-        User = user;
+        this.subcategory = subcategory;
+        this.user = user;
         this.auctionStartTime = auctionStartTime;
         this.auctionEndTime = auctionEndTime;
         this.auctionIsActive = auctionIsActive;
@@ -63,20 +62,20 @@ public class Auction {
         this.auctionDescription = auctionDescription;
     }
 
-    public pl.reverseAuctions.model.subcategory.Subcategory getSubcategory() {
-        return Subcategory;
+    public Subcategory getSubcategory() {
+        return subcategory;
     }
 
-    public void setSubcategory(pl.reverseAuctions.model.subcategory.Subcategory subcategory) {
-        Subcategory = subcategory;
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
-    public pl.reverseAuctions.model.user.User getUser() {
-        return User;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser(pl.reverseAuctions.model.user.User user) {
-        User = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getAuctionStartTime() {
@@ -95,11 +94,11 @@ public class Auction {
         this.auctionEndTime = auctionEndTime;
     }
 
-    public boolean isAuctionIsActive() {
+    public byte isAuctionIsActive() {
         return auctionIsActive;
     }
 
-    public void setAuctionIsActive(boolean auctionIsActive) {
+    public void setAuctionIsActive(byte auctionIsActive) {
         this.auctionIsActive = auctionIsActive;
     }
 

@@ -15,8 +15,8 @@ import java.util.List;
 @Repository
 public class UserDao implements Entity<User> {
 
-    private final String INSERT_QUERY = "INSERT INTO user(userLogin, userFirstName, userLastName, userBirth, userMail, userRole) VALUES (?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE user SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRole = ? WHERE idUser = ?";
+    private final String INSERT_QUERY = "INSERT INTO user(userLogin, userFirstName, userLastName, userBirth, userMail, userRoleId) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE user SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRoleId = ? WHERE idUser = ?";
     private final String DELETE_QUERY = "DELETE FROM user WHERE idUser = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM user";
     private final String GET_BY_ID = "SELECT * FROM user WHERE idUser = ?";
@@ -97,7 +97,7 @@ public class UserDao implements Entity<User> {
                     loadedUser.setLastName(resultSet.getString("userLastName"));
                     loadedUser.setBirth(resultSet.getDate("userBirth"));
                     loadedUser.setMail(resultSet.getString("userMail"));
-                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getInt("idUserRole")));
+                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("idUserRole")));
                     userList.add(loadedUser);
                 }
             }
@@ -106,13 +106,13 @@ public class UserDao implements Entity<User> {
     }
 
     @Override
-    public User getById(int id) throws SQLException {
+    public User getById(Long id) throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
 
             User loadedUser = new User();
             try (PreparedStatement preparedStatement = conn.prepareStatement(GET_BY_ID)) {
 
-                preparedStatement.setInt(1, id);
+                preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     loadedUser.setIdUser(resultSet.getLong("idUser"));
@@ -121,7 +121,7 @@ public class UserDao implements Entity<User> {
                     loadedUser.setLastName(resultSet.getString("userLastName"));
                     loadedUser.setBirth(resultSet.getDate("userBirth"));
                     loadedUser.setMail(resultSet.getString("userMail"));
-                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getInt("idUserRole")));
+                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("idUserRole")));
                 }
             }
             return loadedUser;

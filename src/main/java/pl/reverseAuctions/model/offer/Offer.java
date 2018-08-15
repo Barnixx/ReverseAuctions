@@ -3,7 +3,6 @@ package pl.reverseAuctions.model.offer;
 import pl.reverseAuctions.model.auction.Auction;
 import pl.reverseAuctions.model.user.User;
 
-import java.time.LocalDateTime;
 
 public class Offer {
     private Long id;

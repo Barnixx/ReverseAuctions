@@ -11,5 +11,5 @@ public interface Entity<T> {
 
     List<T> getAll() throws SQLException;
 
-    T getById(int id) throws SQLException;
+    T getById(Long id) throws SQLException;
 }

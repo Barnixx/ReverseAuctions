@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
 import pl.reverseAuctions.model.auction.AuctionDao;
-import pl.reverseAuctions.model.user.User;
 import pl.reverseAuctions.model.user.UserDao;
 
 import java.sql.Connection;
@@ -17,8 +16,8 @@ import java.util.List;
 @Repository
 public class OfferDao implements Entity<Offer> {
 
-    private final String INSERT_QUERY = "INSERT INTO offer(offerTitle, offerDescription, offerPrice, idUser, idAuction, offerAddTime) VALUES (?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE offer SET offerTitle = ?, offerDescription = ?, offerPrice = ?, idUser = ?, idAuction = ?, offerAddTime = ? WHERE idUser = ?";
+    private final String INSERT_QUERY = "INSERT INTO offer(offerTitle, offerDescription, offerPrice, userId, auctionId, offerAddTime) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE offer SET offerTitle = ?, offerDescription = ?, offerPrice = ?, userId = ?, userId = ?, offerAddTime = ? WHERE idOffer = ?";
     private final String DELETE_QUERY = "DELETE FROM offer WHERE idOffer = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM offer";
     private final String GET_BY_ID = "SELECT * FROM offer WHERE idOffer = ?";
@@ -93,8 +92,8 @@ public class OfferDao implements Entity<Offer> {
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getInt("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getInt("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                     offerList.add(loadedOffer);
                 }
@@ -104,21 +103,21 @@ public class OfferDao implements Entity<Offer> {
     }
 
     @Override
-    public Offer getById(int id) throws SQLException {
+    public Offer getById(Long id) throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
 
             Offer loadedOffer = new Offer();
             try (PreparedStatement preparedStatement = conn.prepareStatement(GET_BY_ID)) {
 
-                preparedStatement.setInt(1, id);
+                preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     loadedOffer.setId(resultSet.getLong("idOffer"));
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getInt("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getInt("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                 }
             }

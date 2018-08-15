@@ -23,7 +23,7 @@ public class SubcategoryDao implements Entity<Subcategory> {
     }
 
     @Override
-    public Subcategory getById(int id) {
+    public Subcategory getById(Long id) {
         return null;
     }
 }

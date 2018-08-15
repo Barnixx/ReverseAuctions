@@ -15,8 +15,8 @@ import java.util.List;
 @Repository
 public class AddressDao implements Entity<Address> {
 
-    private final String INSERT_QUERY = "INSERT INTO address(country, city, postalCode, street, idUser) VALUES (?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE address SET country = ?, city = ?, postalCode = ?, street = ?, idUser = ? WHERE idAddress = ?";
+    private final String INSERT_QUERY = "INSERT INTO address(country, city, postalCode, street, userId) VALUES (?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE address SET country = ?, city = ?, postalCode = ?, street = ?, userId = ? WHERE idAddress = ?";
     private final String DELETE_QUERY = "DELETE FROM address WHERE idAddress = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM address";
     private final String GET_BY_ID = "SELECT * FROM address WHERE idAddress = ?";
@@ -92,7 +92,7 @@ public class AddressDao implements Entity<Address> {
                     loadedAddress.setCity(resultSet.getString("city"));
                     loadedAddress.setPostalCode(resultSet.getString("postalCode"));
                     loadedAddress.setStreet(resultSet.getString("street"));
-                    loadedAddress.setUser(userDao.getById(resultSet.getInt("idUser")));
+                    loadedAddress.setUser(userDao.getById(resultSet.getLong("idUser")));
                     addressList.add(loadedAddress);
                 }
             }
@@ -102,12 +102,12 @@ public class AddressDao implements Entity<Address> {
     }
 
     @Override
-    public Address getById(int id) throws SQLException {
+    public Address getById(Long id) throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
             Address loadedAddress = new Address();
             try (PreparedStatement preparedStatement = conn.prepareStatement(GET_BY_ID)) {
 
-                preparedStatement.setInt(1, id);
+                preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     loadedAddress.setId(resultSet.getLong("idAddress"));
@@ -115,7 +115,7 @@ public class AddressDao implements Entity<Address> {
                     loadedAddress.setCity(resultSet.getString("city"));
                     loadedAddress.setPostalCode(resultSet.getString("postalCode"));
                     loadedAddress.setStreet(resultSet.getString("street"));
-                    loadedAddress.setUser(userDao.getById(resultSet.getInt("idUser")));
+                    loadedAddress.setUser(userDao.getById(resultSet.getLong("idUser")));
                 }
             }
             return loadedAddress;
