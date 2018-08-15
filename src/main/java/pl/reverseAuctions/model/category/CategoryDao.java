@@ -71,11 +71,11 @@ public class CategoryDao implements Entity<Category> {
     }
 
     @Override
-    public Category getById(int id) throws SQLException {
+    public Category getById(Long id) throws SQLException {
         try (Connection conn = DbUtil.getConn()){
             Category loadedCategory = new Category();
             try (PreparedStatement preparedStatement = conn.prepareStatement(GET_BY_ID)){
-                preparedStatement.setInt(1, id);
+                preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
                     loadedCategory.setId(resultSet.getLong("id"));

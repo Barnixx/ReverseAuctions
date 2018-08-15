@@ -2,8 +2,6 @@ package pl.reverseAuctions.model.userRole;
 
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
-import pl.reverseAuctions.model.category.Category;
-import pl.reverseAuctions.model.category.CategoryDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,7 +66,7 @@ public class UserRoleDao implements Entity<UserRole> {
     }
 
     @Override
-    public UserRole getById(int id) throws SQLException {
+    public UserRole getById(Long id) throws SQLException {
         try (Connection conn = DbUtil.getConn()) {
             UserRole loadedUserRole = new UserRole();
             try (PreparedStatement preparedStatement = conn.prepareStatement(GET_BY_ID)){

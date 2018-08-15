@@ -26,7 +26,7 @@ public class AuctionDao implements Entity<Auction> {
     }
 
     @Override
-    public Auction getById(int id) {
+    public Auction getById(Long id) {
         return null;
     }
 }
