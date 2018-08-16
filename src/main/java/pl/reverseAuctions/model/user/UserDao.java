@@ -1,5 +1,6 @@
 package pl.reverseAuctions.model.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
@@ -15,19 +16,20 @@ import java.util.List;
 @Repository
 public class UserDao implements Entity<User> {
 
-    private final String INSERT_QUERY = "INSERT INTO user(userLogin, userFirstName, userLastName, userBirth, userMail, userRoleId) VALUES (?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE user SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRoleId = ? WHERE idUser = ?";
-    private final String DELETE_QUERY = "DELETE FROM user WHERE idUser = ?";
+    private final String INSERT_QUERY = "INSERT INTO User(userLogin, userFirstName, userLastName, userBirth, userMail, userRoleId) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE User SET userLogin = ?, userFirstName = ?, userLastName = ?, userBirth = ?, userMail = ?, userRoleId = ? WHERE idUser = ?";
+    private final String DELETE_QUERY = "DELETE FROM User WHERE idUser = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM user";
-    private final String GET_BY_ID = "SELECT * FROM user WHERE idUser = ?";
+    private final String GET_BY_ID = "SELECT * FROM User WHERE idUser = ?";
 
+    @Autowired
     UserRoleDao userRoleDao;
 
     @Override
     public void saveToDb(User model) throws SQLException {
 
         try (Connection conn = DbUtil.getConn()) {
-            if (model.getIdUser() == null) {
+            if (model.getId() == null) {
                 String generatedColumns[] = {"ID"};
                 try (PreparedStatement preparedStatement = conn.prepareStatement(INSERT_QUERY, generatedColumns)) {
 
@@ -44,7 +46,7 @@ public class UserDao implements Entity<User> {
                     preparedStatement.executeUpdate();
                     ResultSet resultSet = preparedStatement.getGeneratedKeys();
                     while (resultSet.next()) {
-                        model.setIdUser(resultSet.getLong(1));
+                        model.setId(resultSet.getLong(1));
                     }
                 }
             } else {
@@ -60,7 +62,7 @@ public class UserDao implements Entity<User> {
                     } else {
                         preparedStatement.setNull(6, java.sql.Types.INTEGER);
                     }
-                    preparedStatement.setLong(7, model.getIdUser());
+                    preparedStatement.setLong(7, model.getId());
                     preparedStatement.executeUpdate();
                 }
             }
@@ -71,12 +73,12 @@ public class UserDao implements Entity<User> {
     public void delete(User model) throws SQLException {
         try (Connection connection = DbUtil.getConn()) {
 
-            if (model.getIdUser() != null) {
+            if (model.getId() != null) {
                 try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY)) {
 
-                    preparedStatement.setLong(1, model.getIdUser());
+                    preparedStatement.setLong(1, model.getId());
                     preparedStatement.executeUpdate();
-                    model.setIdUser(null);
+                    model.setId(null);
                 }
             }
         }
@@ -91,7 +93,7 @@ public class UserDao implements Entity<User> {
 
                 while (resultSet.next()) {
                     User loadedUser = new User();
-                    loadedUser.setIdUser(resultSet.getLong("idUser"));
+                    loadedUser.setId(resultSet.getLong("idUser"));
                     loadedUser.setLogin(resultSet.getString("userLogin"));
                     loadedUser.setFirstName(resultSet.getString("userFirstName"));
                     loadedUser.setLastName(resultSet.getString("userLastName"));
@@ -115,13 +117,13 @@ public class UserDao implements Entity<User> {
                 preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    loadedUser.setIdUser(resultSet.getLong("idUser"));
+                    loadedUser.setId(resultSet.getLong("idUser"));
                     loadedUser.setLogin(resultSet.getString("userLogin"));
                     loadedUser.setFirstName(resultSet.getString("userFirstName"));
                     loadedUser.setLastName(resultSet.getString("userLastName"));
                     loadedUser.setBirth(resultSet.getDate("userBirth"));
                     loadedUser.setMail(resultSet.getString("userMail"));
-                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("idUserRole")));
+                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("userRoleId")));
                 }
             }
             return loadedUser;

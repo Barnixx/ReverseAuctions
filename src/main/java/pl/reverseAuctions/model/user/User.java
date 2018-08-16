@@ -5,7 +5,7 @@ import pl.reverseAuctions.model.userRole.UserRole;
 import java.sql.Date;
 
 public class User {
-    private Long idUser;
+    private Long id;
     private String login;
     private String firstName;
     private String lastName;
@@ -25,12 +25,12 @@ public class User {
         this.userRole = userRole;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogin() {

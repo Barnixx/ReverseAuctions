@@ -1,5 +1,6 @@
 package pl.reverseAuctions.model.userRole;
 
+import org.springframework.stereotype.Repository;
 import pl.reverseAuctions.model.DbUtil;
 import pl.reverseAuctions.model.Entity;
 
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class UserRoleDao implements Entity<UserRole> {
 
     private final String INSERT_QUERY = "INSERT INTO UserRole (userRoleName) VALUES (?)";
@@ -73,7 +75,7 @@ public class UserRoleDao implements Entity<UserRole> {
                 preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()){
-                    loadedUserRole.setId(resultSet.getLong("id"));
+                    loadedUserRole.setId(resultSet.getLong("idUserRole"));
                     loadedUserRole.setUserRoleName(resultSet.getString("userRoleName"));
                 }
             }
