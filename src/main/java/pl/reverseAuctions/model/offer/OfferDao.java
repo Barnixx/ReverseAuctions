@@ -92,8 +92,8 @@ public class OfferDao implements Entity<Offer> {
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getLong("userId")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("auctionId")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                     offerList.add(loadedOffer);
                 }
@@ -116,8 +116,8 @@ public class OfferDao implements Entity<Offer> {
                     loadedOffer.setTitle(resultSet.getString("offerTitle"));
                     loadedOffer.setDescription(resultSet.getString("offerDescription"));
                     loadedOffer.setPrice(resultSet.getDouble("offerPrice"));
-                    loadedOffer.setUser(userDao.getById(resultSet.getLong("idUser")));
-                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("idAuction")));
+                    loadedOffer.setUser(userDao.getById(resultSet.getLong("userId")));
+                    loadedOffer.setAuction(auctionDao.getById(resultSet.getLong("auctionId")));
                     loadedOffer.setAddTime(resultSet.getString("offerAddTime"));
                 }
             }

@@ -97,7 +97,7 @@ public class UserDao implements Entity<User> {
                     loadedUser.setLastName(resultSet.getString("userLastName"));
                     loadedUser.setBirth(resultSet.getDate("userBirth"));
                     loadedUser.setMail(resultSet.getString("userMail"));
-                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("idUserRole")));
+                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("userRoleId")));
                     userList.add(loadedUser);
                 }
             }
@@ -121,7 +121,7 @@ public class UserDao implements Entity<User> {
                     loadedUser.setLastName(resultSet.getString("userLastName"));
                     loadedUser.setBirth(resultSet.getDate("userBirth"));
                     loadedUser.setMail(resultSet.getString("userMail"));
-                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("idUserRole")));
+                    loadedUser.setUserRole(userRoleDao.getById(resultSet.getLong("userRoleId")));
                 }
             }
             return loadedUser;
