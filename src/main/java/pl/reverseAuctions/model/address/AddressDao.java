@@ -36,7 +36,7 @@ public class AddressDao implements Entity<Address> {
                     preparedStatement.setString(3, model.getPostalCode());
                     preparedStatement.setString(4, model.getStreet());
                     if (model.getUser() != null) {
-                        preparedStatement.setLong(5, model.getUser().getIdUser());
+                        preparedStatement.setLong(5, model.getUser().getId());
                     } else {
                         preparedStatement.setNull(5, java.sql.Types.INTEGER);
                     }
@@ -55,7 +55,7 @@ public class AddressDao implements Entity<Address> {
                     preparedStatement.setString(3, model.getPostalCode());
                     preparedStatement.setString(4, model.getStreet());
                     if (model.getUser() != null) {
-                        preparedStatement.setLong(5, model.getUser().getIdUser());
+                        preparedStatement.setLong(5, model.getUser().getId());
                     } else {
                         preparedStatement.setNull(5, java.sql.Types.INTEGER);
                     }

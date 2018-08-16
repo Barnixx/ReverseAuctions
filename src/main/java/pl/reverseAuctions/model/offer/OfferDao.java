@@ -16,11 +16,11 @@ import java.util.List;
 @Repository
 public class OfferDao implements Entity<Offer> {
 
-    private final String INSERT_QUERY = "INSERT INTO offer(offerTitle, offerDescription, offerPrice, userId, auctionId, offerAddTime) VALUES (?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE offer SET offerTitle = ?, offerDescription = ?, offerPrice = ?, userId = ?, userId = ?, offerAddTime = ? WHERE idOffer = ?";
-    private final String DELETE_QUERY = "DELETE FROM offer WHERE idOffer = ?";
-    private final String GET_ALL_QUERY = "SELECT * FROM offer";
-    private final String GET_BY_ID = "SELECT * FROM offer WHERE idOffer = ?";
+    private final String INSERT_QUERY = "INSERT INTO Offer(offerTitle, offerDescription, offerPrice, userId, auctionId, offerAddTime) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE Offer SET offerTitle = ?, offerDescription = ?, offerPrice = ?, userId = ?, userId = ?, offerAddTime = ? WHERE idOffer = ?";
+    private final String DELETE_QUERY = "DELETE FROM Offer WHERE idOffer = ?";
+    private final String GET_ALL_QUERY = "SELECT * FROM Offer";
+    private final String GET_BY_ID = "SELECT * FROM Offer WHERE idOffer = ?";
 
     UserDao userDao;
     AuctionDao auctionDao;
@@ -36,7 +36,7 @@ public class OfferDao implements Entity<Offer> {
                     preparedStatement.setString(1, model.getTitle());
                     preparedStatement.setString(2, model.getDescription());
                     preparedStatement.setDouble(3, model.getPrice());
-                    preparedStatement.setLong(4, model.getUser().getIdUser());
+                    preparedStatement.setLong(4, model.getUser().getId());
                     preparedStatement.setLong(5, model.getAuction().getId());
                     preparedStatement.setString(6, model.getAddTime());
 
@@ -52,7 +52,7 @@ public class OfferDao implements Entity<Offer> {
                     preparedStatement.setString(1, model.getTitle());
                     preparedStatement.setString(2, model.getDescription());
                     preparedStatement.setDouble(3, model.getPrice());
-                    preparedStatement.setLong(4, model.getUser().getIdUser());
+                    preparedStatement.setLong(4, model.getUser().getId());
                     preparedStatement.setLong(5, model.getAuction().getId());
                     preparedStatement.setString(6, model.getAddTime());
                     preparedStatement.setLong(7, model.getId());

@@ -17,7 +17,7 @@ public class Auction {
     private LocalDateTime auctionEndTime;
     private byte auctionIsActive;
     private Long auctionView;
-    private Offer auctionWinOfferId;
+    private Offer auctionWinOffer;
 
     public Auction() {
     }
@@ -26,7 +26,7 @@ public class Auction {
                    Subcategory subcategory,
                    User user, LocalDateTime auctionStartTime,
                    LocalDateTime auctionEndTime, byte auctionIsActive,
-                   Long auctionView, Offer auctionWinOfferId) {
+                   Long auctionView, Offer auctionWinOffer) {
         this.auctionName = auctionName;
         this.auctionDescription = auctionDescription;
         this.subcategory = subcategory;
@@ -35,7 +35,7 @@ public class Auction {
         this.auctionEndTime = auctionEndTime;
         this.auctionIsActive = auctionIsActive;
         this.auctionView = auctionView;
-        this.auctionWinOfferId = auctionWinOfferId;
+        this.auctionWinOffer = auctionWinOffer;
     }
 
     public Long getId() {
@@ -110,11 +110,11 @@ public class Auction {
         this.auctionView = auctionView;
     }
 
-    public Offer getAuctionWinOfferId() {
-        return auctionWinOfferId;
+    public Offer getAuctionWinOffer() {
+        return auctionWinOffer;
     }
 
-    public void setAuctionWinOfferId(Offer auctionWinOfferId) {
-        this.auctionWinOfferId = auctionWinOfferId;
+    public void setAuctionWinOffer(Offer auctionWinOffer) {
+        this.auctionWinOffer = auctionWinOffer;
     }
 }
