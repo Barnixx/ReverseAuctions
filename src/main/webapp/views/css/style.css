@@ -6,6 +6,7 @@ body {
     background-color: #d4d4d4;
     margin-top: 88px;
     margin-bottom: 50px;
+    border-top: 2px solid #004ffe;
 }
 
 .footer {
@@ -23,3 +24,99 @@ a:hover {
 .userLoginPanel {
     background-color: white;
 }
+
+.dropdownRadiobox {
+    opacity: 0;
+    position: absolute;
+}
+
+.selectpickier.dropdown {
+    max-width: 1px;
+}
+
+.selectpickier + button {
+    background-color: white;
+}
+
+button.btn:nth-child(2) {
+    background-color: white;
+}
+
+#navbarForm > form > div > span:nth-child(2) > div > div {
+    margin-top: 0;
+    border-radius: 0;
+    width: 250px;
+    margin-left: -1px;
+}
+
+#navbarForm > form > div > span * {
+    border-radius: 0;
+}
+
+#navbarForm > form > div > span {
+    max-width: 200px;
+}
+
+#navbarForm button[type="submit"] {
+    width: 120px;
+
+}
+
+div.dropdown.bootstrap-select.m-0.border button.btn.dropdown-toggle.btn-light {
+    height: 100%;
+    line-height: 1.5;
+}
+
+.categoryNav a {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.categoryBox {
+    display: flex;
+    position: relative;
+    float: left;
+    overflow: visible;
+}
+
+.categoryItem > a:hover {
+    background-color: #25b5fe;
+    color: white !important;
+}
+
+.subcategoryBox {
+    display: flex;
+    position: relative;
+    float: right;
+    width: 800px;
+    height: 400px;
+}
+
+.subcategoryBox > div {
+    display: flex;
+    padding: 3px;
+    max-height: 100%;
+    width: 100%;
+    overflow: auto;
+    align-content: flex-start;
+}
+
+.subcategoryBox > div ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    padding: 0;
+}
+
+.subcategoryBox > div ul li {
+    list-style-type: none;
+}
+
+.subcategoryBox a {
+    color: #953afe;
+}
+
+.subcategoryBox a:hover {
+    color: black;
+}
+

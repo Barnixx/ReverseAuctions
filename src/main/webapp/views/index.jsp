@@ -7,8 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/layout" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:genericpage>
+<t:genericpage subcategoriesMap="${subcategoriesMap}">
 	<!--Slider -->
 	<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
 		<!-- #region Jssor Slider Begin -->

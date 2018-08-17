@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/layout" %>
 
-<t:genericpage>
+<t:genericpage subcategoriesMap="${subcategoriesMap}">
 	<div class="container-fluid mt-3">
 	<div class="container ">
 		<div class="row justify-content-center border p-5 userLoginPanel">
