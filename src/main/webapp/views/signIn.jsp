@@ -17,7 +17,7 @@
 					<fieldset class="form-group row py-4">
 						<legend class="col-form-legend col-sm-12"><b>Zaloguj się, aby odkryć oferty</b></legend>
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-12">
 								<div class="form-group">
 									<label for="userPasswordInput">Login/Email</label>
 									<input type="text"
@@ -30,7 +30,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-12">
 								<div class="form-group">
 									<label for="userPasswordInput">Hasło</label>
 									<input type="password"

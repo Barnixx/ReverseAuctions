@@ -9,6 +9,10 @@ body {
     border-top: 2px solid #004ffe;
 }
 
+.container-fluid .row {
+    clear: both;
+}
+
 .footer {
     position: absolute;
     bottom: 0;

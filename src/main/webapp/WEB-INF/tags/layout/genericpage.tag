@@ -25,6 +25,8 @@
 		<script src="../../../views/js/bootstrap-select/bootstrap-select.min.js"></script>
 		
 		<script src="../../../views/js/script.js"></script>
+		
+		<link rel="stylesheet" href="../../../views/css/reset.css" type="text/css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
