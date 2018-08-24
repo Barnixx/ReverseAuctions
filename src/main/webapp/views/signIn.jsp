@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/layout" %>
 
-<t:genericpage>
+<t:genericpage subcategoriesMap="${subcategoriesMap}">
 	<div class="container-fluid mt-3">
 	<div class="container ">
 		<div class="row justify-content-center border p-5 userLoginPanel">
@@ -17,7 +17,7 @@
 					<fieldset class="form-group row py-4">
 						<legend class="col-form-legend col-sm-12"><b>Zaloguj się, aby odkryć oferty</b></legend>
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-12">
 								<div class="form-group">
 									<label for="userPasswordInput">Login/Email</label>
 									<input type="text"
@@ -30,7 +30,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-12">
 								<div class="form-group">
 									<label for="userPasswordInput">Hasło</label>
 									<input type="password"

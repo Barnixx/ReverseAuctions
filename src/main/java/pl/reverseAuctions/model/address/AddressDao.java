@@ -15,11 +15,11 @@ import java.util.List;
 @Repository
 public class AddressDao implements Entity<Address> {
 
-    private final String INSERT_QUERY = "INSERT INTO address(country, city, postalCode, street, userId) VALUES (?, ?, ?, ?, ?)";
-    private final String UPDATE_QUERY = "UPDATE address SET country = ?, city = ?, postalCode = ?, street = ?, userId = ? WHERE idAddress = ?";
-    private final String DELETE_QUERY = "DELETE FROM address WHERE idAddress = ?";
-    private final String GET_ALL_QUERY = "SELECT * FROM address";
-    private final String GET_BY_ID = "SELECT * FROM address WHERE idAddress = ?";
+    private final String INSERT_QUERY = "INSERT INTO Address(country, city, postalCode, street, userId) VALUES (?, ?, ?, ?, ?)";
+    private final String UPDATE_QUERY = "UPDATE Address SET country = ?, city = ?, postalCode = ?, street = ?, userId = ? WHERE idAddress = ?";
+    private final String DELETE_QUERY = "DELETE FROM Address WHERE idAddress = ?";
+    private final String GET_ALL_QUERY = "SELECT * FROM Address";
+    private final String GET_BY_ID = "SELECT * FROM Address WHERE idAddress = ?";
 
     UserDao userDao;
 
