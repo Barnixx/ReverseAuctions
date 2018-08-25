@@ -22,11 +22,11 @@
 		crossorigin="anonymous"></script>
 		
 		<!--Bootstrap Select JS-->
-		<script src="../../../views/js/bootstrap-select/bootstrap-select.min.js"></script>
+		<script src="../../../../resources/static/js/bootstrap-select/bootstrap-select.min.js"></script>
 		
-		<script src="../../../views/js/script.js"></script>
+		<script src="../../../../resources/static/js/script.js"></script>
 		
-		<link rel="stylesheet" href="../../../views/css/reset.css" type="text/css">
+		<link rel="stylesheet" href="../../../../resources/static/css/reset.css" type="text/css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -36,9 +36,9 @@
 		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 		crossorigin="anonymous">
 		<!--Bootstrap Select CSS-->
-		<link rel="stylesheet" href="../../../views/css/bootstrap-select/bootstrap-select.min.css">
+		<link rel="stylesheet" href="../../../../resources/static/css/bootstrap-select/bootstrap-select.min.css">
 		
-		<link rel="stylesheet" href='../../../views/css/style.css' type="text/css">
+		<link rel="stylesheet" href='../../../../resources/static/css/style.css' type="text/css">
 		
 		<title>${title}</title>
 		</head>
@@ -133,7 +133,7 @@
 		</div>
 		</nav>
 		</div>
-		<jsp:doBody/>
+		<jsp:doBody/>Ł
 		</div>
 		<div id="pageFooter" class="footer">
 		<div class="d-flex justify-content-center">

@@ -15,8 +15,8 @@
 		<!-- #region Jssor Slider Begin -->
 		<!-- Generator: Jssor Slider Maker -->
 		<!-- Source: https://www.jssor.com -->
-		<script src="../././views/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-		<script src="../././views/js/jssor.slider-27.4.0.min.js" type="text/javascript"></script>
+		<script src="../../resources/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="../../resources/static/js/jssor.slider-27.4.0.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
             jQuery(document).ready(function ($) {
 
@@ -146,15 +146,15 @@
 			<div data-u="loading" class="jssorl-003-oval"
 				 style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
 				<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"
-					 src="../././views/img/oval.svg"/>
+					 src="../../resources/static/img/oval.svg"/>
 			</div>
 			<div data-u="slides"
 				 style="cursor:default;position:relative;top:0px;left:0px;width:1280px;height:300px;overflow:hidden;">
 				<div>
-					<img data-u="image" src="../././views/img/image.png"/>
+					<img data-u="image" src="../../resources/static/img/image.png"/>
 				</div>
 				<div>
-					<img data-u="image" src="../././views/img/slide.jpg"/>
+					<img data-u="image" src="../../resources/static/img/slide.jpg"/>
 				</div>
 			</div>
 			<!-- Bullet Navigator -->
