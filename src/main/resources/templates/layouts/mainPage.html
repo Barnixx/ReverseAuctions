@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+    <!--/*@thymesVar id="pageTitle" type="java.lang.String"*/-->
+    <head th:include="fragments/head::head (pageTitle = ${pageTitle})">
+    </head>
+    <body>
+        <div id="body">
+            <div class="container-fluid border shadow-lg p-0">
+                <!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+                <nav th:replace="fragments/mainNavbar::mainNavbar (subcategoriesMap = ${subcategoriesMap})">
+                </nav>
+                <nav th:replace="fragments/mainNavbar::categoryNavbar (subcategoriesMap = ${subcategoriesMap})">
+                </nav>
+            </div>
+            <div layout:fragment="content">
+            </div>
+        </div>
+        <footer>
+            <div th:replace="fragments/footer::pagefooter">
+            </div>
+        </footer>
+    </body>
+</html>
