@@ -37,4 +37,15 @@ public class AuctionServiceImpl implements AuctionService {
     public void delete(Long id) {
         auctionRepository.delete(id);
     }
+
+    @Override
+    public List<Auction> getAuctionsBySubcategoryId(Long id) {
+        return auctionRepository.findBySubcategory_Id(id);
+    }
+
+    @Override
+    public List<Auction> getAuctionsByCategoryId(Long id) {
+        return auctionRepository.findBySubcategory_Category_Id(id);
+    }
+
 }

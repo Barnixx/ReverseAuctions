@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap},
+      pageCSS=#{app.pageCSS.auctionList}">
+<body>
+<section layout:fragment="content">
+    <div th:id="auctionsList">
+        <div class="container-fluid bg-primary">
+            Tutaj jakiś slider
+        </div>
+        <div class="container-fluid m-0 p-2">
+            <div class="d-flex flex-row">
+                <div class="d-flex flex-column mr-2 filter-list bg-white p-4 border border-warning">
+                    <h3 th:text="#{app.main.auctions.filter}" class="d-flex"></h3>
+                    <div class="filter-content d-flex flex-row">
+                        <form>
+                            <div class="form-check" style="white-space: nowrap">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Default checkbox
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                <label class="form-check-label" for="defaultCheck2">
+                                    Checkbox
+                                </label>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+                <div class="d-flex flex-column w-100 m-0 auction-list bg-white radius-0" style="">
+                    <div th:each="auction:${auctionsList}">
+                        <a th:href="@{/getAuction/{id} (id = ${auction.id})}" class="d-flex flex-row border px-2">
+                            <div class="p-2">Tutaj obrazek</div>
+                            <div th:href="@{/getAuction/{id} (id = ${auction.id})}"
+                                 class="d-flex flex-column w-100 d-flex justify-content-between">
+                                <div th:text="${auction.name}" class="p-2 align-self-center">
+                                </div>
+                                <div th:text="${auction.subcategory.name}" class="p-2 align-self-center">
+                                </div>
+                                <div th:text="${auction.view}" class="p-2 align-self-center"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
