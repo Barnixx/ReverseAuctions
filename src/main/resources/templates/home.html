@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}">
+    <body>
+        <section layout:fragment="content">
+            <div th:replace="fragments/mainSlider::mainSlider">
+            </div>
+        </section>
+    </body>
+</html>
