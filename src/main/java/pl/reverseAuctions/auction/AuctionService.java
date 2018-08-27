@@ -15,4 +15,8 @@ public interface AuctionService {
     void delete(Auction auction);
 
     void delete(Long id);
+
+    List<Auction> getAuctionsBySubcategoryId(Long id);
+
+    List<Auction> getAuctionsByCategoryId(Long id);
 }

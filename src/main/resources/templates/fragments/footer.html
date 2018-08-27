@@ -3,7 +3,8 @@
     <body>
         <div th:fragment="pagefooter" th:id="pageFooter" th:class="footer">
             <div class="d-flex justify-content-center">
-                <p id="copyright" class="text-white m-0">Copyright 2018, Reverse Auction Sp. z. o o.</p>
+                <p th:text="#{app.main.footer}" id="copyright" class="text-white m-0">Copyright 2018, Reverse Auction
+                    Sp. z. o o.</p>
             </div>
         </div>
     </body>
