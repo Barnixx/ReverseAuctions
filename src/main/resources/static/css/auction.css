@@ -1,0 +1,33 @@
+.description {
+    text-align: center;
+    margin-left: 15%;
+    width: 35%;
+}
+
+.info {
+    text-align: center;
+    margin-right: 15%;
+    width: 35%;
+}
+
+.values {
+    text-align: center;
+    background-color: #e3e3e3;
+    border-radius: 10px;
+}
+
+.names {
+    text-align: center;
+    background-color: darkgrey;
+    border-radius: 10px;
+
+}
+
+.title {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.offerList {
+    overflow-y: scroll;
+}
