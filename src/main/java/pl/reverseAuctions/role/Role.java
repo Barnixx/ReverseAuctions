@@ -1,4 +1,4 @@
-package pl.reverseAuctions.userRole;
+package pl.reverseAuctions.role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +14,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "role")
-public class UserRole {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Long id;
+
     @NotBlank
-    @Column(name = "role_name", length = 50)
-    private String roleName;
+    @Column(name = "role")
+    private String name;
 }

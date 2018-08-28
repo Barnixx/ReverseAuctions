@@ -1,21 +1,38 @@
 package pl.reverseAuctions.user;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.reverseAuctions.role.Role;
+import pl.reverseAuctions.role.RoleRepository;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+                           BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+
     }
 
     @Override
@@ -35,5 +52,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         userRepository.delete(id);
+    }
+
+    @Override
+    public User findByUserName(String username) {
+        return userRepository.findByUsername(username);
     }
 }

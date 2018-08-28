@@ -6,14 +6,14 @@
     <a th:text="#{app.name}" href="/" class="navbar-brand ml-5 pl-4 font-weight-bold">Reverse Auction</a>
     <div class="navbar-collapse mr-auto" id="navbarForm">
         <ul class="navbar-nav ml-auto order-1">
-            <li class="nav-item dropdown mr-5">
-                <a th:text="#{app.main.navbar.userbar}" class="nav-link" style="cursor: pointer; white-space: nowrap"
+            <li class="nav-item dropdown mr-2">
+                <a class="nav-link" style="cursor: pointer; white-space: nowrap"
                    id="userBarDropdown"
                    data-toggle="dropdown"
                    aria-haspopup="true"
                    aria-expanded="false">
                     <i class="fa fa-user fa-lg" style="display: inline"></i>
-                    Moje Konto
+                    <span th:text="#{app.main.navbar.userbar}">Moje Konto</span>
                     <i class="fas fa-angle-down pl-2"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right m-0 rounded-0" style="width: 200px;"
@@ -27,10 +27,26 @@
                         <i class="fa fa-cog fa-lg pl-3 ml-auto"></i>
                     </a>
                     <div class="dropdown-divider"></div>
+                    <span sec:authorize="!isAuthenticated()">
                     <a th:text="#{app.main.loginButton}" class="btn btn-warning rounded-0 text-secondary w-100"
-                       href="/signIn">Zaloguj</a>
-                    <a th:text="#{app.main.signUpButton}" class="dropdown-item text-center pt-1" href="">Zarejstruj
+                       th:href="@{/signIn}">Zaloguj</a>
+                    <a th:text="#{app.main.signUpButton}" class="dropdown-item text-center pt-1" th:href="@{/signUp}">Zarejstruj
                         się</a>
+                    </span>
+                    <span sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" class="btn btn-warning rounded-0 text-secondary w-100"
+                                   value="Wyloguj"/>
+                        </form>
+                    </span>
+
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="h-100" style=" display:flex; align-items:center;">
+                    <span sec:authorize="isAuthenticated()" style="white-space: nowrap;">
+                        Witaj <span sec:authentication="name"></span>
+                    </span>
                 </div>
             </li>
 
@@ -59,12 +75,12 @@
     <div class="navbar m-0 p-0">
         <ul class="navbar-nav m-0">
             <li class="nav-item ml-3 p-0 border-right border-left dropdown" style="width: 200px">
-                <a th:text="#{app.main.category}" class="nav-link py-3 px-4 text-dark categoryButton"
+                <a class="nav-link py-3 px-4 text-dark categoryButton"
                    style="cursor: pointer;"
                    id="categoryDropDown"
                    aria-haspopup="true"
                    aria-expanded="false" data-toggle="dropdown">
-                    Kategorie
+                    <span th:text="#{app.main.category}">Kategorie</span>
                     <i class="fas fa-angle-down pl-5 pr-0"></i>
                 </a>
                 <div class="dropdown-menu categoryNav border rounded-0 mt-0 p-0"

@@ -67,6 +67,9 @@ public class Auction {
     @OneToOne(orphanRemoval = true)
     private Offer winOffer;
 
+    @Column(name = "auction_imageUrl")
+    private String imageUrl;
+
     @PrePersist
     void created() {
         this.created = LocalDateTime.now();

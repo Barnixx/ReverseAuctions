@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+>
+<body>
+<div th:fragment="signUpForm" class="container-fluid mt-3">
+    <div class="container ">
+        <div class="row justify-content-center border p-5 userLoginPanel">
+            <div class="col-8 w-100">
+                <!--/*@thymesVar id="user" type="pl.reverseAuctions.user.User"*/-->
+                <form class="" th:method="post" th:object="${user}" th:action="@{/signUp}">
+                    <fieldset class="form-group row py-4">
+                        <legend th:text="#{app.main.signUp.header}" class="col-form-legend col-sm-12"><b>Zarejestruj
+                            się</b></legend>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label th:text="#{app.main.singUp.loginLabel}" for="userPasswordInput">Login</label>
+                                    <input th:field="*{username}" type="text"
+                                           name="userLoginInput" id="userLoginInput"
+                                           class="form-control rounded-0"
+                                           style="width: 100%"
+                                           placeholder="exemple@exemple.pl"
+                                           aria-describedby="userLoginInputHelp">
+                                    <small th:text="#{app.main.singUp.loginLabel.helper}"
+                                           id="userLoginInputHelp" class="text-muted">Wprowadź login
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label th:text="#{app.main.singUp.emailLabel}" for="userPasswordInput">Email</label>
+                                    <input th:field="*{mail}" type="text"
+                                           name="userEmailInput" id="userEmailInput"
+                                           class="form-control rounded-0"
+                                           style="width: 100%"
+                                           placeholder="exemple@exemple.pl"
+                                           aria-describedby="userEmailInputHelp">
+                                    <small th:text="#{app.main.singUp.loginLabel.helper}"
+                                           id="userEmailInputHelp" class="text-muted">Wprowadź login
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label th:text="#{app.main.singUp.passwordLabel}"
+                                           for="userPasswordInput">Hasło</label>
+                                    <input th:field="*{password}" type="password"
+                                           name="userPasswordInput" id="userPasswordInput"
+                                           class="form-control rounded-0"
+                                           placeholder="Hasło"
+                                           aria-describedby="userPassowordInputHelp">
+                                    <small th:text="#{app.main.singUp.passwordLabel.helper}"
+                                           id="userPassowordInputHelp" class="text-muted">Wprowadź hasło
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label th:text="#{app.main.singUp.passwordRepeatLabel}"
+                                           for="userPasswordRepeatInput">Hasło</label>
+                                    <input th:field="*{repeatPassword}" type="password"
+                                           name="userPasswordRepeatInput" id="userPasswordRepeatInput"
+                                           class="form-control rounded-0"
+                                           placeholder="Hasło"
+                                           aria-describedby="userPassowordRepeatInputHelp">
+                                    <small th:text="#{app.main.singUp.passwordRepeatLabel.helper}"
+                                           id="userPassowordRepeatInputHelp" class="text-muted">Wprowadź hasło
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group row">
+                        <div class="col-sm-12 d-flex justify-content-end p-0">
+                            <button th:text="#{app.main.signUpButton}" type="submit"
+                                    class="btn btn-warning rounded-0 font-weight-bold">Register
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
