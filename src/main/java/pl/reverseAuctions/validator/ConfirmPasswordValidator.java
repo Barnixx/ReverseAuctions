@@ -19,8 +19,8 @@ public class ConfirmPasswordValidator implements ConstraintValidator<ConfirmPass
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
                     .addPropertyNode("password").addConstraintViolation();
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
