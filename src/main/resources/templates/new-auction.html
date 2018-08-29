@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.userProfile}">
+<body>
+<section layout:fragment="content">
+
+    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
+
+    <div class="user-main">
+        NOWA AUKCJA
+
+        <!--<form th:action="@{/new-auction}"	th:object="${auction}"	method="post">-->
+            <!--<p> Tytuł <input type="text" th:field="*{name}"/></p>-->
+            <!--<p> Opis <input type="text" th:field="*{description}"/></p>-->
+            <!--<p> </p>-->
+
+
+            <!--<p> Kategoria <select th:field="*{category}">-->
+                <!--<option-->
+                    <!--th:each="category : ${categories}"-->
+                    <!--th:value="${category.name}"-->
+                    <!--th:text="${category.name}">-->
+                <!--</option>-->
+            <!--</select>-->
+            <!--</p>-->
+
+            <!--<p> Podkategoria <select th:field="*{subcategory}">-->
+                <!--<option-->
+                        <!--th:each="dropdownValue: ${singleSelectAllValues}"-->
+                        <!--th:value="${dropdownValue}"-->
+                        <!--th:text="${dropdownValue}" >-->
+                <!--</option>-->
+            <!--</select>-->
+            <!--</p>-->
+
+        <!--</form>-->
+    </div>
+
+</section>
+</body>
+</html>

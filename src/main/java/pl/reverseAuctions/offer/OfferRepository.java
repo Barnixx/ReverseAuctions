@@ -10,5 +10,9 @@ import java.util.List;
 @Transactional
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     Offer findById(Long id);
+
+    List<Offer> findAllByUser_Id(Long id);
+
     List<Offer> findByAuctionIdOrderByPriceAsc(Long id);
+
 }

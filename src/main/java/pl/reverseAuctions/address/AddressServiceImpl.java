@@ -1,6 +1,7 @@
 package pl.reverseAuctions.address;
 
 import org.springframework.stereotype.Service;
+import pl.reverseAuctions.user.User;
 
 import java.util.List;
 
@@ -34,8 +35,23 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public Address getByUser(User user) {
+        return addressRepository.findByUser(user);
+    }
+
+    @Override
+    public Address getByUser_Id(Long id) {
+        return addressRepository.findByUser_Id(id);
+    }
+
+    @Override
     public List<Address> getAll() {
         return addressRepository.findAll();
+    }
+
+    @Override
+    public List<Address> getAllByUser_Id(Long id) {
+        return addressRepository.findAllByUser_Id(id);
     }
 
 }

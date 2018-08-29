@@ -29,6 +29,11 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public List<Offer> getAllByUser(Long id) {
+        return offerRepository.findAllByUser_Id(id);
+    }
+
+    @Override
     public void delete(Long id) {
         offerRepository.delete(id);
     }

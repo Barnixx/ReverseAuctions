@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <body>
 <nav th:fragment="mainNavbar (subcategoriesMap)"
      class="navbar navbar-expand-md navbar-light bg-white border-bottom py-4 px-5 fixed-top">
@@ -18,15 +18,36 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right m-0 rounded-0" style="width: 200px;"
                      aria-labelledby="userBarDropdown">
-                    <a th:text="#{app.main.navbar.userbar.auction}" class="dropdown-item text-center" href="#">Moje
-                        Aukcje</a>
-                    <a th:text="#{app.main.navbar.userbar.offer}" class="dropdown-item text-center" href="#">Moje
-                        Oferty</a>
+
+
+                    <span sec:authorize="isAuthenticated()">
+                        <a th:text="#{app.main.navbar.userbar.user}" class="dropdown-item text-center"
+                           href="/user">Profil</a>
+                        <a th:text="#{app.main.navbar.userbar.auction}" class="dropdown-item text-center"
+                       href="/user/my-auctions">Moje Aukcje</a>
+                        <a th:text="#{app.main.navbar.userbar.offer}" class="dropdown-item text-center"
+                       href="/user/my-offers">Moje Oferty</a>
+
                     <div class="dropdown-divider"></div>
+
                     <a th:text="#{app.main.navbar.userbar.config}" class="dropdown-item text-center" href="">Ustawienia
                         <i class="fa fa-cog fa-lg pl-3 ml-auto"></i>
                     </a>
+                    </span>
+
+                    <span sec:authorize="!isAuthenticated()">
+                    <a th:text="#{app.main.navbar.userbar.auction}" class="dropdown-item text-center"
+                       href="/signIn">Moje Aukcje</a>
+                        <a th:text="#{app.main.navbar.userbar.offer}" class="dropdown-item text-center"
+                           href="/signIn">Moje Oferty</a>
+                        <div class="dropdown-divider"></div>
+                    <a th:text="#{app.main.navbar.userbar.config}" class="dropdown-item text-center" href="">Ustawienia
+                        <i class="fa fa-cog fa-lg pl-3 ml-auto"></i>
+                    </a>
+                    </span>
+
                     <div class="dropdown-divider"></div>
+
                     <span sec:authorize="!isAuthenticated()">
                     <a th:text="#{app.main.loginButton}" class="btn btn-warning rounded-0 text-secondary w-100"
                        th:href="@{/signIn}">Zaloguj</a>
