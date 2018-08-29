@@ -48,4 +48,9 @@ public class AuctionServiceImpl implements AuctionService {
         return auctionRepository.findBySubcategory_Category_Id(id);
     }
 
+    @Override
+    public List<Auction> getAuctionsByUser(Long id) {
+        return auctionRepository.findAllByUser_Id(id);
+    }
+
 }

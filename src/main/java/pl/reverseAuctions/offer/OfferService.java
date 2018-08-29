@@ -13,6 +13,8 @@ public interface OfferService {
 
     List<Offer> getAll();
 
+    List<Offer> getAllByUser(Long id);
+
     void delete(Long id);
 
     void delete(Offer offer);

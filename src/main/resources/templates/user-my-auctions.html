@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.userProfile}">
+<body>
+<section layout:fragment="content">
+
+    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
+
+
+    <div class="user-main-header">
+        <h3 id="my-offer-header-0">MOJE AUKCJE</h3>
+        <p id="my-offer-header-1">| Tytuł</p>
+        <p id="my-offer-header-2">| Wyświetlenia</p>
+        <p id="my-offer-header-3">| Pozostały czas</p>
+    </div>
+    <div class="main-back">
+        <div class="user-main" >
+            <div class="user-auction-result" th:each="auction: ${auctionList}">
+                <p id="my-auction-title" th:text="${auction.name}"></p>
+                <p id="my-auction-view" th:text="${auction.view}"></p>
+                <p id="my-auction-endtime" th:text="${auction.endTime}"></p>
+                <p id="my-auction-link">
+                    <a class="my-offer-to-auction-link" href="/user/Iridium405">Link --&gt</a></p>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

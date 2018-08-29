@@ -19,4 +19,6 @@ public interface AuctionService {
     List<Auction> getAuctionsBySubcategoryId(Long id);
 
     List<Auction> getAuctionsByCategoryId(Long id);
+
+    List<Auction> getAuctionsByUser(Long id);
 }
