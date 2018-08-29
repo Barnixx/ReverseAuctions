@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS = #{app.pageCSS.auction}">
+<body>
+<section layout:fragment="content">
+    <!--<br><br><br><br><br><br><div th:text="${auction.name}">-->
+    <!--</div>-->
+    <div class="container">
+        <div class="p-1 bd-highlight"></div>
+        <div th:text="${auction.name}" class="p-1 bd-highlight title values"></div>
+        <div class="d-flex flex-row">
+            <div class="description">
+                <div class="p-1 names" th:text="'Description:'">
+                </div>
+                <div class="p-11 values" th:text="${auction.description}">
+                </div>
+            </div>
+            <div class="info">
+                <div th:text="'User:'" class="p1, names"></div>
+                <div th:text="${auction.user.getFirstName()} + ' ' + ${auction.user.getLastName()}" class="p-2 bd-highlight values"></div>
+                <div th:text="'Start:'" class="p1, names"></div>
+                <div th:text="${auction.startTime}" class="p-2 bd-highlight values"></div>
+                <div th:text="'End:'" class="p1, names"></div>
+                <div th:text="${auction.endTime}" class="p-2 bd-highlight values"></div>
+                <div th:text="'Views:'" class="p1, names"></div>
+                <div th:text="${auction.view}" class="p-2 bd-highlight values"></div>
+                <div th:text="'Winning offer:'" class="p1, names"></div>
+                <div th:if="${offerList.size() != 0}" th:text="${#numbers.formatDecimal((offerList.get(0).price), 1, 2)} + ' PLN'" class="p-2 bd-highlight values" ></div>
+                <div th:if="${offerList.size() == 0}" th:text="'Aktualnie brak ofert.'" class="p-2 bd-highlight values" ></div>
+            </div>
+        </div>
+        <div th:if="${offerList.size() != 0}" th:text="'Offers:'" class="p-1 bd-highlight names title"></div>
+        <div th:if="${offerList.size() != 0}" class="d-flex flex-row title values">
+            <div th:text="'Title'" class="values description"></div>
+            <div th:text="'Price'" class="values info"></div>
+        </div>
+        <div th:if="${offerList.size() != 0}" class="title values">
+            <div th:each="offer: ${offerList}" class="d-flex flex-row">
+                <div th:text="${offer.title}" class="p-3"></div>
+                <div th:if="${offer}" th:text="${#numbers.formatDecimal((offer.price), 1, 2)} + ' PLN'" class="p-3 ml-auto"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
