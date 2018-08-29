@@ -19,4 +19,6 @@ public interface OfferService {
 
     void delete(Offer offer);
 
+    List<Offer> getOfferByAuctionId(Long id);
+
 }

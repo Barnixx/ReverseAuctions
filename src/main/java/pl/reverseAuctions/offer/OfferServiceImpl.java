@@ -42,4 +42,9 @@ public class OfferServiceImpl implements OfferService {
     public void delete(Offer offer) {
         offerRepository.delete(offer);
     }
+
+    @Override
+    public List<Offer> getOfferByAuctionId(Long id) {
+        return offerRepository.findByAuctionIdOrderByPriceAsc(id);
+    }
 }
