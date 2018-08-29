@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.signUpPage}">
+<body>
+<section layout:fragment="content">
+    <div th:replace="fragments/signUpForm::signUpForm">
+    </div>
+    </div>
+</section>
+</body>
+</html>
