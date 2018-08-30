@@ -37,7 +37,10 @@ public class AuctionController {
 
     @GetMapping("/getAuction/{id}")
     public String allAuctions(Model model, @PathVariable("id") Long id){
-        model.addAttribute("auction", auctionService.getById(id));
+        Auction auction = auctionService.getById(id);
+        auction.setView(auction.getView() + 1);
+        auctionService.save(auction);
+        model.addAttribute("auction", auction);
         model.addAttribute("offerList", offerService.getOfferByAuctionId(id));
         model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
         return "auction";

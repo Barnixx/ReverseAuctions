@@ -1,26 +1,21 @@
 .description {
     text-align: center;
-    margin-left: 15%;
-    width: 35%;
+    width: 50%;
 }
 
 .info {
     text-align: center;
-    margin-right: 15%;
-    width: 35%;
+    width: 50%;
 }
 
 .values {
     text-align: center;
-    background-color: #e3e3e3;
-    border-radius: 10px;
 }
 
 .names {
     text-align: center;
-    background-color: darkgrey;
-    border-radius: 10px;
-
+    background-color: #d4d4d4;
+    border: solid black 1px;
 }
 
 .title {
@@ -30,4 +25,12 @@
 
 .offerList {
     overflow-y: scroll;
+}
+
+.bccolor {
+    background-color: white;
+}
+
+.blue {
+    background-color: blue;
 }
