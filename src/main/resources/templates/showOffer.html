@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS = #{app.pageCSS.showOffer}">
+<body>
+<section layout:fragment="content">
+    <div class="p-3 bd-highlight"></div>
+    <div class="container">
+        <div class="p-3 bd-highlight"></div>
+        <div class="d-flex flex-row">
+            <div class="body">
+                <div th:text="'Tytuł:'" class="p1 names"></div>
+                <div th:text="${offer.title}" class="p-1 bd-highlight values"></div>
+                <div th:text="'Użytkownik:'" class="p1 names"></div>
+                <div th:text="${offer.user.username}" class="p-1 bd-highlight values"></div>
+                <div th:text="'Cena:'" class="p1 names"></div>
+                <div th:text="${#numbers.formatDecimal((offer.price), 1, 2)} + ' PLN'"
+                     class="p-1 bd-highlight values"></div>
+                <div th:text="'Dodana:'" class="p1 names"></div>
+                <div th:text="${offer.created}" class="p-1 bd-highlight values"></div>
+                <div th:text="'Uaktualniona:'" class="p1 names"></div>
+                <div th:if="${offer.updated == null}" th:text="'-'" class="p1 values"></div>
+                <div th:if="${offer.updated != null}" th:text="${offer.updated}" class="p1 values"></div>
+                <div class="p1 values"></div>
+            </div>
+            <div class="body">
+                <div class="p-1 names" th:text="'Opis:'"></div>
+                <div class="p-11" th:text="${offer.description}"></div>
+            </div>
+        </div>
+        <div class="mid">
+            <a th:href="@{/getAuction/{id}(id=${offer.auction.id})}" class="mid">
+                <div th:text="'Cofnij'" class="btn btn-warning rounded-0 font-weight-bold mid"></div>
+            </a>
+        </div>
+    </div>
+    <div class="p-3 bd-highlight"></div>
+</section>
+</body>
+</html>

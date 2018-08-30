@@ -1,6 +1,7 @@
 package pl.reverseAuctions.offer;
 
 import org.springframework.stereotype.Service;
+import pl.reverseAuctions.user.User;
 
 import java.util.List;
 
@@ -47,4 +48,7 @@ public class OfferServiceImpl implements OfferService {
     public List<Offer> getOfferByAuctionId(Long id) {
         return offerRepository.findByAuctionIdOrderByPriceAsc(id);
     }
+
+    @Override
+    public User getUserByOfferId(Long id){ return offerRepository.findById(id).getUser();};
 }

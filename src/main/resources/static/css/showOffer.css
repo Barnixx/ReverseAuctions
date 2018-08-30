@@ -1,0 +1,22 @@
+.container {
+    background-color: white;
+    width: 65%;
+}
+
+.names {
+    text-align: center;
+    background-color: #d4d4d4;
+    border: solid black 1px;
+}
+
+.values {
+    text-align: center;
+}
+
+.body {
+    width: 50%;
+}
+
+.mid {
+    text-align: center;
+}

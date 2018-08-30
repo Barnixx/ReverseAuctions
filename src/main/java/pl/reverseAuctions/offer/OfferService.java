@@ -1,6 +1,7 @@
 package pl.reverseAuctions.offer;
 
 import org.springframework.stereotype.Service;
+import pl.reverseAuctions.user.User;
 
 import java.util.List;
 
@@ -21,4 +22,5 @@ public interface OfferService {
 
     List<Offer> getOfferByAuctionId(Long id);
 
+    User getUserByOfferId(Long id);
 }

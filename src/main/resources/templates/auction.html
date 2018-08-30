@@ -11,38 +11,38 @@
         <div th:text="${auction.name}" class="p-1 bd-highlight title values bccolor"></div>
         <div class="d-flex flex-row bccolor title">
             <div class="description">
-                <div class="p-1 names" th:text="'Description:'">
+                <div class="p-1 names" th:text="'Opis:'">
                 </div>
                 <div class="p-11 values" th:utext="${auction.description}">
                 </div>
             </div>
             <div class="info">
-                <div th:text="'User:'" class="p1, names"></div>
+                <div th:text="'Użytkownik:'" class="p1, names"></div>
                 <div th:text="${auction.user.username}" class="p-2 bd-highlight values"></div>
-                <div th:text="'Start:'" class="p1, names"></div>
+                <div th:text="'Początek:'" class="p1, names"></div>
                 <div th:text="${auction.startTime}" class="p-2 bd-highlight values"></div>
-                <div th:text="'End:'" class="p1, names"></div>
+                <div th:text="'Koniec:'" class="p1, names"></div>
                 <div th:text="${auction.endTime}" class="p-2 bd-highlight values"></div>
-                <div th:text="'Views:'" class="p1, names"></div>
+                <div th:text="'Wyświetlenia:'" class="p1, names"></div>
                 <div th:text="${auction.view}" class="p-2 bd-highlight values"></div>
-                <div th:text="'Winning offer:'" class="p1, names"></div>
+                <div th:text="'Wygrywająca oferta:'" class="p1, names"></div>
                 <div th:if="${offerList.size() != 0}"
                      th:text="${#numbers.formatDecimal((offerList.get(0).price), 1, 2)} + ' PLN'"
                      class="p-2 bd-highlight values"></div>
                 <div th:if="${offerList.size() == 0}" th:text="'Aktualnie brak ofert.'"
                      class="p-2 bd-highlight values"></div>
-                <a th:text="'Add offer'" class="button btn btn-warning rounded-0 font-weight-bold"
+                <a th:text="'Dodaj ofertę'" class="button btn btn-warning rounded-0 font-weight-bold"
                    th:href="@{/getAuction/{id}/addOffer(id=${auction.id})}"></a>
             </div>
         </div>
-        <div th:if="${offerList.size() != 0}" th:text="'Offers:'" class="p-1 bd-highlight names title"></div>
+        <div th:if="${offerList.size() != 0}" th:text="'Oferty:'" class="p-1 bd-highlight names title"></div>
         <div th:if="${offerList.size() != 0}" class="d-flex flex-row title bccolor">
-            <div th:text="'Title'" class="values description names"></div>
-            <div th:text="'Price'" class="values info names"></div>
+            <div th:text="'Tytuł:'" class="values description names"></div>
+            <div th:text="'Cena:'" class="values info names"></div>
         </div>
         <div th:if="${offerList.size() != 0}" class="title values names bccolor">
             <div th:each="offer: ${offerList}">
-                <a th:href="@{/}" class="d-flex flex-row">
+                <a th:href="@{/showOffer/{id}(id=${offer.id})}" class="d-flex flex-row">
                     <div th:text="${offer.title}" class="p-3"></div>
                     <div th:if="${offer}" th:text="${#numbers.formatDecimal((offer.price), 1, 2)} + ' PLN'"
                          class="p-3 ml-auto"></div>

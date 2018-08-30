@@ -61,4 +61,11 @@ public class AuctionController {
         offerService.save(offer);
         return "redirect:/getAuction/" + offer.getAuction().getId();
     }
+    @GetMapping("/showOffer/{id}")
+    public String showOffer(Model model, @PathVariable("id") Long id){
+        model.addAttribute("offer", offerService.getById(id));
+        model.addAttribute("user", userService.getUserByOfferId(id).getUsername());
+        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        return "showOffer";
+    }
 }
