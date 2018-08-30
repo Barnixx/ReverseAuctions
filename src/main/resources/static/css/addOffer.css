@@ -1,0 +1,13 @@
+.container {
+    background-color: white;
+}
+
+.bcwrite {
+    background-color: white;
+    border: solid #e3e3e3 1.5px;
+}
+
+.center {
+    font-size: larger;
+    text-align: center;
+}
