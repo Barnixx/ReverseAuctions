@@ -20,9 +20,17 @@ public interface AuctionService {
 
     List<Auction> getAuctionsBySubcategoryId(Long id);
 
+    Page<Auction> getAuctionsBySubcategoryId(Long id, Pageable pageable);
+
     List<Auction> getAuctionsByCategoryId(Long id);
+
+    Page<Auction> getAuctionsByCategoryId(Long id, Pageable pageable);
 
     List<Auction> getAuctionsByUser(Long id);
 
     Page<Auction> findAll(Pageable pageable);
+
+    Page<Auction> getAuctionsByName(String name, Pageable pageable);
+
+    Page<Auction> getAllByNameAndCategory_Id(String name, Long id, Pageable pageable);
 }

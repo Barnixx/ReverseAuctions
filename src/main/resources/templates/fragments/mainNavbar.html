@@ -74,10 +74,10 @@
         </ul>
         <form class="mx-2 my-auto d-inline w-100 order-0 p-0" method="GET" action="/searchAuction">
             <div class="input-group p-0 m-0">
-                <input type="text" class="form-control border rounded-0 m-0 w-auto"
+                <input name="auctionName" type="text" class="form-control border rounded-0 m-0 w-auto"
                        placeholder="Co dziś chcesz zaoferować?">
                 <span class="input-group-append p-0 m-0">
-                    <select class="selectpicker m-0 border p-0">
+                    <select class="selectpicker m-0 border p-0" name="categoryId">
                         <option th:text="#{app.main.navbar.userbar.select.option}" value="0" selected>Wszędzie</option>
                         <option th:each="category: ${subcategoriesMap}" th:value="${category.key.id}"
                                 th:text="${category.key.categoryName}"></option>

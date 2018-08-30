@@ -10,7 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.reverseAuctions.category.CategoryService;
 import pl.reverseAuctions.offer.OfferService;
 import pl.reverseAuctions.user.CurrentUser;
@@ -74,10 +74,24 @@ public class AuctionController {
         return "redirect:/getAuction/" + returnAuction.getId();
     }
 
-    @RequestMapping("/list")
-    public String listAction(Model model, @SortDefault("id") Pageable pageable) {
+    @GetMapping("/searchAuction")
+    public String search(Model model, @RequestParam(required = false, defaultValue = "0") Long categoryId,
+                         @RequestParam(required = false) String auctionName, @SortDefault("name") Pageable pageable) {
+
         model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
-        model.addAttribute("page", auctionService.findAll(pageable));
-        return "testPage";
+        if (categoryId == 0 && !auctionName.equals("")) {
+            model.addAttribute("page", auctionService.getAuctionsByName(auctionName, pageable));
+            System.out.println("PIERWSZY IF");
+            return "auctionList";
+        }
+        if (!auctionName.equals("")) {
+            model.addAttribute("page", auctionService.getAllByNameAndCategory_Id(auctionName, categoryId, pageable));
+            System.out.println("drugi IF");
+            return "auctionList";
+        }
+
+        return "redirect:/";
+
+
     }
 }

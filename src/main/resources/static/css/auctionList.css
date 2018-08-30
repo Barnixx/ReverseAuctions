@@ -1,0 +1,45 @@
+.paginator-nav ul li:first-child {
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.paginator-nav ul li {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.paginator-nav ul li:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+td a {
+    display: block;
+    color: #1f1f1f;
+    font-weight: bold;
+}
+
+.auctionView {
+    color: #999999;
+}
+
+table.table thead .sorted:after {
+    display: inline-block;
+    font-family: 'FontAwesome';
+    opacity: 0.8;
+    margin-left: 1em;
+}
+
+table.table thead .sorted.sorted-desc:after {
+    content: "\f15e";
+}
+
+table.table thead .sorted.sorted-asc:after {
+    content: "\f15d";
+}

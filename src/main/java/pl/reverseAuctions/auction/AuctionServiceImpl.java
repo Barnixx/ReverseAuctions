@@ -46,8 +46,18 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
     @Override
+    public Page<Auction> getAuctionsBySubcategoryId(Long id, Pageable pageable) {
+        return auctionRepository.findBySubcategory_Id(id, pageable);
+    }
+
+    @Override
     public List<Auction> getAuctionsByCategoryId(Long id) {
         return auctionRepository.findBySubcategory_Category_Id(id);
+    }
+
+    @Override
+    public Page<Auction> getAuctionsByCategoryId(Long id, Pageable pageable) {
+        return auctionRepository.findBySubcategory_Category_Id(id, pageable);
     }
 
     @Override
@@ -59,4 +69,15 @@ public class AuctionServiceImpl implements AuctionService {
     public Page<Auction> findAll(Pageable pageable) {
         return auctionRepository.findAll(pageable);
     }
+
+    @Override
+    public Page<Auction> getAuctionsByName(String name, Pageable pageable) {
+        return auctionRepository.findAllByNameContaining(name, pageable);
+    }
+
+    @Override
+    public Page<Auction> getAllByNameAndCategory_Id(String name, Long id, Pageable pageable) {
+        return auctionRepository.findAllByNameContainingAndSubcategory_Category_Id(name, id, pageable);
+    }
+
 }
