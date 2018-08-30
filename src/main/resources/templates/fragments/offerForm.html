@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="addOffer" class="container-fluid mt-3">
+    <form class="row" th:action="@{/getAuction/{id}/addOffer(id=${auction.id})}" th:object="${offer}" method="post">
+
+        <div class="container">
+            <div class="p-1 bd-highlight"></div>
+            <div th:text="'Add offer'" class="p-1 bd-highlight center"></div>
+            <div class="d-flex flex-row">
+                <input hidden="hidden" th:object="${auction}">
+                <div>
+                    <div class="d-flex flex-row" th:text="'Title:'">
+                    </div>
+                    <div>
+                        <input class="p-2 bd-highlight bcwrite" th:placeholder="'title'" type="text" th:field="*{title}"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex flex-row" th:text="'Description:'">
+                    </div>
+                    <div>
+                        <input class="p-2 bd-highlight bcwrite" th:placeholder="'description'" type="text" th:field="*{description}"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex flex-row" th:text="'Price:'">
+                    </div>
+                    <div>
+                        <input class="p-2 bd-highlight bcwrite" th:placeholder="'price'" type="text" th:field="*{price}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 bd-highlight">
+            </div>
+            <div>
+                <input class="btn btn-warning rounded-0 font-weight-bold" type="submit" value="Add offer">
+            </div>
+            <div class="p-3 bd-highlight">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
