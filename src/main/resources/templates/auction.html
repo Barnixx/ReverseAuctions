@@ -20,7 +20,7 @@
             </div>
             <div class="info">
                 <div th:text="'User:'" class="p1, names"></div>
-                <div th:text="${auction.user.getFirstName()} + ' ' + ${auction.user.getLastName()}" class="p-2 bd-highlight values"></div>
+                <div th:text="${auction.user.username}" class="p-2 bd-highlight values"></div>
                 <div th:text="'Start:'" class="p1, names"></div>
                 <div th:text="${auction.startTime}" class="p-2 bd-highlight values"></div>
                 <div th:text="'End:'" class="p1, names"></div>

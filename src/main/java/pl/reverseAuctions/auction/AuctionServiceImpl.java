@@ -1,5 +1,7 @@
 package pl.reverseAuctions.auction;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,8 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
     @Override
-    public void save(Auction auction) {
-        auctionRepository.save(auction);
+    public Auction save(Auction auction) {
+        return auctionRepository.save(auction);
     }
 
     @Override
@@ -53,4 +55,8 @@ public class AuctionServiceImpl implements AuctionService {
         return auctionRepository.findAllByUser_Id(id);
     }
 
+    @Override
+    public Page<Auction> findAll(Pageable pageable) {
+        return auctionRepository.findAll(pageable);
+    }
 }

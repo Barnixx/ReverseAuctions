@@ -1,12 +1,14 @@
 package pl.reverseAuctions.auction;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface AuctionService {
-    void save(Auction auction);
+    Auction save(Auction auction);
 
     Auction getById(Long id);
 
@@ -21,4 +23,6 @@ public interface AuctionService {
     List<Auction> getAuctionsByCategoryId(Long id);
 
     List<Auction> getAuctionsByUser(Long id);
+
+    Page<Auction> findAll(Pageable pageable);
 }

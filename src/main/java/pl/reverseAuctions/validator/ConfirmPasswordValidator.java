@@ -15,12 +15,12 @@ public class ConfirmPasswordValidator implements ConstraintValidator<ConfirmPass
     public boolean isValid(User user, ConstraintValidatorContext context) {
         System.out.println(user.getPassword());
         System.out.println(user.getRepeatPassword());
-        if (user.getPassword().equals(user.getRepeatPassword())) {
+        if (!user.getPassword().equals(user.getRepeatPassword())) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
                     .addPropertyNode("password").addConstraintViolation();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
