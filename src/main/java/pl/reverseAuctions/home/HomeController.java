@@ -15,10 +15,15 @@ public class HomeController {
         this.categoryService = categoryService;
     }
 
+
     @GetMapping("/")
     public String homePage(Model model) {
 
         model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
         return "home";
     }
+//    @GetMapping
+//    public String search(){
+//
+//    }
 }

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.addAuction},
+      pageScript=#{app.pageScript.addAuction}">
+<body>
+<section layout:fragment="content">
+
+    <div class="container addAuction">
+        <div class="row justify-content-center border p-2">
+            <form th:action="addAuction" th:method="post" th:object="${auction}" class="col-10">
+                <fieldset class="form-group row py-4">
+                    <legend class="col-form-legend col-sm-12"><b>Dodaj nową aukcję</b></legend>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="titleInput">Wprowadź tytuł</label>
+                                <input th:field="*{name}" type="text"
+                                       name="titleInput" id="titleInput"
+                                       class="form-control rounded-0"
+                                       style="width: 100%"
+                                       placeholder="Kupie Lame"
+                                       aria-describedby="titleInputHelp">
+                                <small th:unless="${#fields.hasErrors('name')}"
+                                       th:id="titleInputHelp" class="text-muted">Wprowadź tytuł aukcji
+                                </small>
+                                <small th:errors="*{name}"
+                                       th:id="titleInputHelp" class="text-muted error">Wprowadź tytuł aukcji
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="category">Wybierz kategorie</label>
+                                <select type="datetime-local"
+                                        name="category" id="category"
+                                        class="form-control rounded-0"
+                                        aria-describedby="categoryHelp">
+                                    <option>Wybierz kategorie</option>
+                                    <option th:each="category:${subcategoriesMap}"
+                                            th:text="${category.key.categoryName}"
+                                            th:id="'category_' + ${category.key.id}" th:value="${category.key.id}"
+                                            class="categoryOption"></option>
+
+                                </select>
+                                <small id="categoryHelp" class="text-muted">Wybierz w której kategori chcesz umieścić
+                                    aukcje
+                                </small>
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="subcategory">Wybierz podkategorie</label>
+                                <select th:field="*{subcategory}" type="datetime-local"
+                                        name="subcategory" id="subcategory"
+                                        class="form-control rounded-0"
+                                        aria-describedby="subcategoryHelp">
+                                    <option th:value="0">Wybierz Podkategorie</option>
+                                    <optgroup th:each="category:${subcategoriesMap}"
+                                              th:label="${category.key.categoryName}"
+                                              th:id="'subcategory_'+${category.key.id}" class="subcategoryList">
+                                        <option th:each="subcategory:${category.value}" th:value="${subcategory.id}"
+                                                th:text="${subcategory.name}"></option>
+                                    </optgroup>
+                                </select>
+                                <small th:unless="${#fields.hasErrors('subcategory')}"
+                                       th:id="subcategoryHelp" class="text-muted">Wybierz podkategorię w której chcesz
+                                    umieścić aukcję
+                                </small>
+                                <small th:errors="*{subcategory}"
+                                       th:id="titleInputHelp" class="text-muted error">Wprowadź tytuł aukcji
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="imageInput">Wgraj miniature</label>
+                                <input disabled th:type="file"
+                                       name="imageInput" id="imageInput"
+                                       class="form-control rounded-0"
+                                       style="width: 100%"
+                                       aria-describedby="imageInputHelp">
+                                <small
+                                        id="imageInputHelp" class="text-muted">Wgraj miniature aukcji
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="startTimeInput">Czas Rozpoczęcia Aukcji</label>
+                                <input th:field="*{startTime}" type="date"
+                                       name="startTimeInput" id="startTimeInput"
+                                       class="form-control rounded-0"
+                                       placeholder="2018-03-12"
+                                       aria-describedby="startTimeInputHelp">
+                                <small th:unless="${#fields.hasErrors('startTime')}"
+                                       th:id="startTimeInputHelp" class="text-muted">Wprowadź datę rozpoczęcia aukcji
+                                </small>
+                                <small th:errors="*{startTime}"
+                                       th:id="titleInputHelp" class="text-muted error">Wprowadź tytuł aukcji
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="endTimeInput">Czas Zakończenia Aukcji</label>
+                                <input th:field="*{endTime}" type="date"
+                                       name="endTimeInput" id="endTimeInput"
+                                       class="form-control rounded-0"
+                                       aria-describedby="endTimeInputHelp">
+                                <small th:unless="${#fields.hasErrors('endTime')}"
+                                       th:id="endTimeInputInputHelp" class="text-muted">Wprowadź datę zakończenia aukcji
+                                </small>
+                                <small th:errors="*{endTime}"
+                                       th:id="titleInputHelp" class="text-muted error">Wprowadź tytuł aukcji
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="descriptionInput">Wprowadź Opis Aukcji</label>
+                                <textarea th:field="*{description}" rows="10"
+                                          name="descriptionInput" id="descriptionInput"
+                                          class="form-control rounded-0"
+                                          aria-describedby="descriptionInputHelp"></textarea>
+                                <small th:unless="${#fields.hasErrors('description')}"
+                                       th:id="descriptionInputHelp" class="text-muted">Wprowadź opis aukcji
+                                </small>
+                                <small th:errors="*{description}"
+                                       th:id="titleInputHelp" class="text-muted error">Wprowadź tytuł aukcji
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success w-100">Dodaj Aukcję</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="reset" class="btn btn-danger w-100">Resetuj
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

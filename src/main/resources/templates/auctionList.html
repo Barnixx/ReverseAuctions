@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
       layout:decorator="/layouts/mainPage"
       th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap},
       pageCSS=#{app.pageCSS.auctionList}">
@@ -12,45 +12,99 @@
         </div>
         <div class="container-fluid m-0 p-2">
             <div class="d-flex flex-row">
-                <div class="d-flex flex-column mr-2 filter-list bg-white p-4 border border-warning">
-                    <h3 th:text="#{app.main.auctions.filter}" class="d-flex"></h3>
-                    <div class="filter-content d-flex flex-row">
-                        <form>
-                            <div class="form-check" style="white-space: nowrap">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Default checkbox
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                <label class="form-check-label" for="defaultCheck2">
-                                    Checkbox
-                                </label>
-                            </div>
-
-                        </form>
-
+                <div class="d-flex flex-column mr-2 filter-list ">
+                    <div class="align-self-start bg-white p-4 border border-warning">
+                        <h3 th:text="#{app.main.auctions.filter}" class="d-flex"></h3>
+                        <div class="filter-content d-flex flex-row">
+                            <form>
+                                <div class="form-check" style="white-space: nowrap">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                    <label class="form-check-label" for="defaultCheck2">
+                                        Checkbox
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex flex-column w-100 m-0 auction-list bg-white radius-0" style="">
-                    <div th:each="auction:${auctionsList}">
-                        <a th:href="@{/getAuction/{id} (id = ${auction.id})}" class="d-flex flex-row border px-2">
-                            <div class="p-2">Tutaj obrazek</div>
-                            <div th:href="@{/getAuction/{id} (id = ${auction.id})}"
-                                 class="d-flex flex-column w-100 d-flex justify-content-between">
-                                <div th:text="${auction.name}" class="p-2 align-self-center">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-column">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th scope="col"><a class="" sd:pagination-sort="name">Nazwa</a></th>
+                                    <th scope="col"><a class="" sd:pagination-sort="endTime">Czas Zakończenia</a></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="auction:${page}">
+                                    <td>
+                                        <a th:href="@{/getAuction/{id} (id = ${auction.id})}"
+                                           class="nav-link auctionName">
+                                            <p>Tutaj obrazek</p>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/getAuction/{id} (id = ${auction.id})}">
+                                            <div class="p-2 align-self-center w-100 h-100">
+                                                <span th:text="${auction.name}"></span>
+                                                <span th:text="'(' + ${auction.id} + ')'"></span>
+                                            </div>
+                                            <div class="w-100 h-100">
+                                                <div class="auctionView" style="float: right;">
+                                                    <i class="far fa-eye"></i><span th:text="${auction.view}"></span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/getAuction/{id} (id = ${auction.id})}" class="w-100 h-100">
+                                            <div th:text="${auction.endTime}" class="align-middle w-100 h-100"></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <!--<div th:each="auction:${page}">-->
+                            <!--<a th:href="@{/getAuction/{id} (id = ${auction.id})}" class="d-flex flex-row border px-2">-->
+                            <!--<div class="p-2">Tutaj obrazek</div>-->
+                            <!--<div th:href="@{/getAuction/{id} (id = ${auction.id})}"-->
+                            <!--class="d-flex flex-column w-100 d-flex justify-content-between">-->
+                            <!--<div th:text="${auction.name}" class="p-2 align-self-center">-->
+                            <!--</div>-->
+                            <!--<div th:text="${auction.subcategory.name}" class="p-2 align-self-center">-->
+                            <!--</div>-->
+                            <!--<div th:text="${auction.view}" class="p-2 align-self-center"></div>-->
+                            <!--</div>-->
+                            <!--</a>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="container">
+                            <div class="row w-100 justify-content-between">
+                                <div class="col-6">
+                                    <div sd:pagination-summary="">Info</div>
                                 </div>
-                                <div th:text="${auction.subcategory.name}" class="p-2 align-self-center">
+                                <div class="col-6">
+                                    <nav aria-label="Page navigation example" class="paginator-nav ml-auto">
+                                        <ul class="pagination" sd:pagination="full">
+                                        </ul>
+                                    </nav>
                                 </div>
-                                <div th:text="${auction.view}" class="p-2 align-self-center"></div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 </body>
 </html>

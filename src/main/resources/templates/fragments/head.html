@@ -18,8 +18,12 @@
 
         <!--Bootstrap Select JS-->
         <script th:src="@{/js/bootstrap-select/bootstrap-select.min.js}"></script>
-
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({selector: 'textarea'});</script>
+        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
         <script th:src="@{/js/script.js}"></script>
+        <!--/*@thymesVar id="pageScript" type="java.lang.String"*/-->
+        <script th:src="@{/js/{pageScript} (pageScript=${pageScript})}"></script>
 
         <link th:rel="stylesheet" th:href="@{/css/reset.css}" type="text/css">
         <!-- Bootstrap CSS -->
@@ -32,6 +36,9 @@
               crossorigin="anonymous">
         <!--Bootstrap Select CSS-->
         <link th:rel="stylesheet" th:href="@{/css/bootstrap-select/bootstrap-select.min.css}">
+        <!--<link th:rel="stylesheet" th:href="@{/css/bootstrap-datetimepicker.min.css}">-->
+        <link th:rel="stylesheet"
+              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
         <!--/*@thymesVar id="pageCSS" type="java.lang.String"*/-->
         <link th:rel="stylesheet" th:href="@{/css/{pageCSS} (pageCSS=${pageCSS})}">
 
