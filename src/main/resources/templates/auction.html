@@ -6,8 +6,6 @@
       th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS = #{app.pageCSS.auction}">
 <body>
 <section layout:fragment="content">
-    <!--<br><br><br><br><br><br><div th:text="${auction.name}">-->
-    <!--</div>-->
     <div class="container">
         <div class="p-1 bd-highlight"></div>
         <div th:text="${auction.name}" class="p-1 bd-highlight title values"></div>
@@ -30,6 +28,8 @@
                 <div th:text="'Winning offer:'" class="p1, names"></div>
                 <div th:if="${offerList.size() != 0}" th:text="${#numbers.formatDecimal((offerList.get(0).price), 1, 2)} + ' PLN'" class="p-2 bd-highlight values" ></div>
                 <div th:if="${offerList.size() == 0}" th:text="'Aktualnie brak ofert.'" class="p-2 bd-highlight values" ></div>
+
+                <a th:text="'Add offer'" class="button btn btn-warning rounded-0 font-weight-bold" th:href="@{/getAuction/{id}/addOffer(id=${auction.id})}"> 12345</a>
             </div>
         </div>
         <div th:if="${offerList.size() != 0}" th:text="'Offers:'" class="p-1 bd-highlight names title"></div>
