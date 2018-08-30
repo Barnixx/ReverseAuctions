@@ -9,6 +9,9 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import pl.reverseAuctions.role.Role;
 import pl.reverseAuctions.validator.ConfirmPassword;
+import pl.reverseAuctions.validator.UniqeUserName;
+import pl.reverseAuctions.validator.UniqueUserEmail;
+import pl.reverseAuctions.validator.UserRegisterValidationGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -27,6 +30,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @UniqeUserName(message = "Podany login jest już zajęty", groups = UserRegisterValidationGroup.class)
     @NotBlank(message = "Login nie może być pusty")
     @Length(min = 5, max = 20, message = "Login powinien mieć od {min} do {max} znaków")
     @Column(nullable = false, unique = true)
@@ -46,6 +50,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @UniqueUserEmail(message = "Podany email już istnieje", groups = UserRegisterValidationGroup.class)
     @NotBlank(message = "Email nie możę być pusty")
     @Email(message = "Wprowadź poprawny adres email")
     @Column(name = "user_email", length = 200)

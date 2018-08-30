@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -47,7 +48,8 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Override
     public Page<Auction> getAuctionsBySubcategoryId(Long id, Pageable pageable) {
-        return auctionRepository.findBySubcategory_Id(id, pageable);
+        return auctionRepository.findAllBySubcategory_IdAndEndTimeGreaterThanEqual(id, LocalDate.now(), pageable);
+        //return auctionRepository.findBySubcategory_Id(id, pageable);
     }
 
     @Override
@@ -57,7 +59,9 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Override
     public Page<Auction> getAuctionsByCategoryId(Long id, Pageable pageable) {
-        return auctionRepository.findBySubcategory_Category_Id(id, pageable);
+        return auctionRepository.findAllBySubcategory_Category_IdAndEndTimeGreaterThanEqual(id, LocalDate.now(), pageable);
+
+        //return auctionRepository.findBySubcategory_Category_Id(id, pageable);
     }
 
     @Override

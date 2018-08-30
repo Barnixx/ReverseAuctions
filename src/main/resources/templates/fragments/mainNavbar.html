@@ -23,19 +23,24 @@
                     <span sec:authorize="isAuthenticated()">
                         <a th:text="#{app.main.navbar.userbar.user}" class="dropdown-item text-center"
                            href="/user">Profil</a>
+                          <a th:text="#{app.main.navbar.userbar.addAuction}" class="dropdown-item text-center"
+                             href="/addAuction">Załóż Aukcję</a>
                         <a th:text="#{app.main.navbar.userbar.auction}" class="dropdown-item text-center"
-                       href="/user/my-auctions">Moje Aukcje</a>
+                           href="/user/my-auctions">Moje Aukcje</a>
                         <a th:text="#{app.main.navbar.userbar.offer}" class="dropdown-item text-center"
-                       href="/user/my-offers">Moje Oferty</a>
+                           href="/user/my-offers">Moje Oferty</a>
 
-                    <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
 
-                    <a th:text="#{app.main.navbar.userbar.config}" class="dropdown-item text-center" href="">Ustawienia
-                        <i class="fa fa-cog fa-lg pl-3 ml-auto"></i>
-                    </a>
+                        <a class="dropdown-item text-center" href="">
+                        <span th:text="#{app.main.navbar.userbar.config}"></span><i
+                                class="fa fa-cog fa-lg pl-3 ml-auto"></i>
+                        </a>
                     </span>
 
                     <span sec:authorize="!isAuthenticated()">
+                          <a th:text="#{app.main.navbar.userbar.addAuction}" class="dropdown-item text-center"
+                             href="/addAuction">Załóż Aukcję</a>
                     <a th:text="#{app.main.navbar.userbar.auction}" class="dropdown-item text-center"
                        href="/signIn">Moje Aukcje</a>
                         <a th:text="#{app.main.navbar.userbar.offer}" class="dropdown-item text-center"

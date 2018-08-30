@@ -8,22 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import pl.reverseAuctions.category.CategoryService;
 import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.offer.OfferService;
 import pl.reverseAuctions.user.CurrentUser;
+import pl.reverseAuctions.validator.NewAuctionValidationGroup;
 
-
-import javax.validation.Valid;
+import javax.validation.groups.Default;
 import java.util.List;
-import pl.reverseAuctions.user.User;
 
 
 @Controller
@@ -69,7 +63,7 @@ public class AuctionController {
     }
 
     @PostMapping("/addAuction")
-    public String saveAuction(Model model, @Valid Auction auction, BindingResult bindingResult,
+    public String saveAuction(Model model, @Validated({NewAuctionValidationGroup.class, Default.class}) Auction auction, BindingResult bindingResult,
                               @AuthenticationPrincipal CurrentUser currentUser) {
 
         List<FieldError> errors = bindingResult.getFieldErrors();
@@ -106,7 +100,7 @@ public class AuctionController {
 
         return "redirect:/";
 
-
+    }
 
     @GetMapping("/getAuction/{id}/addOffer")
     public String addOffer(@PathVariable("id") Long id, Model model){

@@ -59,4 +59,14 @@ public class UserServiceImpl implements UserService {
     public User findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
+
+    @Override
+    public Boolean isUserExist(String username) {
+        return userRepository.countByUsername(username) <= 0;
+    }
+
+    @Override
+    public Boolean isUserMailExist(String mail) {
+        return userRepository.countByMail(mail) <= 0;
+    }
 }
