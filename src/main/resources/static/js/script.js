@@ -17,5 +17,4 @@ $(function () {
         console.log(idNumber[1]);
         showSubcategory(idNumber[1]);
     })
-
 });

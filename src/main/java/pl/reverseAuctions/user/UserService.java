@@ -20,4 +20,8 @@ public interface UserService {
 
     User findByUserName(String username);
 
+    Boolean isUserExist(String username);
+
+    Boolean isUserMailExist(String mail);
+
 }

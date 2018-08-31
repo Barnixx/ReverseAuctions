@@ -10,9 +10,11 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.reverseAuctions.role.Role;
 import pl.reverseAuctions.validator.ConfirmPassword;
+import pl.reverseAuctions.validator.UniqeUserName;
+import pl.reverseAuctions.validator.UniqueUserEmail;
+import pl.reverseAuctions.validator.UserRegisterValidationGroup;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,7 +23,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@ConfirmPassword
+@ConfirmPassword(message = "Hasła są różne")
 @Entity
 @Table(name = "users")
 public class User {
@@ -29,12 +31,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Length(min = 5, max = 20)
+    @UniqeUserName(message = "Podany login jest już zajęty", groups = UserRegisterValidationGroup.class)
+    @NotBlank(message = "Login nie może być pusty")
+    @Length(min = 5, max = 20, message = "Login powinien mieć od {min} do {max} znaków")
     @Column(nullable = false, unique = true)
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "Hasło nie może być puste")
     @Column(length = 200)
     private String password;
 
@@ -48,17 +51,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @NotNull
-    @Email
+    @UniqueUserEmail(message = "Podany email już istnieje", groups = UserRegisterValidationGroup.class)
+    @NotBlank(message = "Email nie możę być pusty")
+    @Email(message = "Wprowadź poprawny adres email")
     @Column(name = "user_email", length = 200)
     private String mail;
 
     @Column(name = "first_name", length = 150)
-    @Size(min = 2, max = 150)
+    @Size(min = 2, max = 150, message = "Imie może mieć od {min} do {max} znaków")
     private String firstName;
 
     @Column(name = "last_name", length = 150)
-    @Size(min = 2, max = 150)
+    @Size(min = 2, max = 150, message = "Nazwisko możę mieć od {min} do {max} znaków")
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

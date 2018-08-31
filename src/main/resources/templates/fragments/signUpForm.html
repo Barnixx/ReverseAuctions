@@ -19,10 +19,13 @@
                                            name="userLoginInput" id="userLoginInput"
                                            class="form-control rounded-0"
                                            style="width: 100%"
-                                           placeholder="exemple@exemple.pl"
                                            aria-describedby="userLoginInputHelp">
-                                    <small th:text="#{app.main.singUp.loginLabel.helper}"
-                                           id="userLoginInputHelp" class="text-muted">Wprowadź login
+                                    <small th:unless="${#fields.hasErrors('username')}"
+                                           th:text="#{app.main.singUp.loginLabel.helper}"
+                                           th:id="userLoginInputHelp" class="text-muted">Wprowadź login
+                                    </small>
+                                    <small th:errors="*{username}"
+                                           th:id="userLoginInputHelp" class="text-mutedc error">Wprowadź login
                                     </small>
                                 </div>
                             </div>
@@ -37,8 +40,12 @@
                                            style="width: 100%"
                                            placeholder="exemple@exemple.pl"
                                            aria-describedby="userEmailInputHelp">
-                                    <small th:text="#{app.main.singUp.loginLabel.helper}"
-                                           id="userEmailInputHelp" class="text-muted">Wprowadź login
+                                    <small th:unless="${#fields.hasErrors('mail')}"
+                                           th:text="#{app.main.singUp.loginLabel.helper}"
+                                           th:id="userEmailInputHelp" class="text-muted">Wprowadź login
+                                    </small>
+                                    <small th:errors="*{mail}"
+                                           th:id="userLoginInputHelp" class="text-mutedc error">Wprowadź login
                                     </small>
                                 </div>
                             </div>
@@ -53,8 +60,12 @@
                                            class="form-control rounded-0"
                                            placeholder="Hasło"
                                            aria-describedby="userPassowordInputHelp">
-                                    <small th:text="#{app.main.singUp.passwordLabel.helper}"
-                                           id="userPassowordInputHelp" class="text-muted">Wprowadź hasło
+                                    <small th:unless="${#fields.hasErrors('password')}"
+                                           th:text="#{app.main.singUp.passwordLabel.helper}"
+                                           th:id="userPassowordInputHelp" class="text-muted">Wprowadź hasło
+                                    </small>
+                                    <small th:errors="*{password}"
+                                           th:id="userLoginInputHelp" class="text-mutedc error">Wprowadź login
                                     </small>
                                 </div>
                             </div>
@@ -67,8 +78,12 @@
                                            class="form-control rounded-0"
                                            placeholder="Hasło"
                                            aria-describedby="userPassowordRepeatInputHelp">
-                                    <small th:text="#{app.main.singUp.passwordRepeatLabel.helper}"
-                                           id="userPassowordRepeatInputHelp" class="text-muted">Wprowadź hasło
+                                    <small th:unless="${#fields.hasErrors('password')}"
+                                           th:text="#{app.main.singUp.passwordRepeatLabel.helper}"
+                                           th:id="userPassowordRepeatInputHelp" class="text-muted">Wprowadź hasło
+                                    </small>
+                                    <small th:errors="*{password}"
+                                           th:id="userLoginInputHelp" class="text-mutedc error">Wprowadź login
                                     </small>
                                 </div>
                             </div>

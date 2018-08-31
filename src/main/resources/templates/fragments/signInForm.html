@@ -42,6 +42,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <span th:if="${param.error}" class="error">Login lub hasło nieprawidłowe</span>
                                 <a th:text="#{app.main.signIn.remindPassword}" th:href="@{/resetPassword}"
                                    class="d-flex justify-content-end">Nie pamiętasz hasła?</a>
                             </fieldset>

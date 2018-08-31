@@ -126,3 +126,6 @@ div.dropdown.bootstrap-select.m-0.border button.btn.dropdown-toggle.btn-light {
     color: black;
 }
 
+.error {
+    color: red !important;
+}

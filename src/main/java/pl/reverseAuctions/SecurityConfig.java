@@ -24,23 +24,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .anyRequest().permitAll()
-                .and().formLogin().loginPage("/signIn")
-                .and().logout().logoutSuccessUrl("/")
+                .antMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/addAuction/**").hasAnyAuthority("USER", "ADMIN")
+                .and().formLogin().loginPage("/signIn").failureUrl("/signIn?error=true")
+                .defaultSuccessUrl("/user")
+                .and()
+                .logout().logoutSuccessUrl("/")
                 .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
     }
-
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder())
-//                .withUser("admin").password(passwordEncoder().encode("admin"))
-//                .roles("ADMIN", "USER");
-//
-//    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
