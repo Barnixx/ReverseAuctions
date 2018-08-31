@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="addOffer" class="container-fluid mt-3">
-    <form class="row" th:action="@{/getAuction/{id}/addOffer(id=${auction.id})}" th:object="${offer}" method="post">
+    <form class="row" th:action="@{/getAuction/{id}/addOffer(id=${id})}" th:object="${offer}" method="post">
 
         <div class="container">
             <div class="p-1 bd-highlight"></div>
             <div th:text="'Dodaj ofertę'" class="p-1 bd-highlight center"></div>
             <div>
-                <input hidden="hidden" th:object="${auction}">
+                <!--<input hidden="hidden" th:field="*{auction}" th:value="${auction}">-->
                 <div>
                     <div th:text="'Tytuł:'">
                     </div>
