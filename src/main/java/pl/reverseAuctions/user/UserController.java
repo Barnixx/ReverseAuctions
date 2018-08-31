@@ -4,9 +4,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.reverseAuctions.address.Address;
 import pl.reverseAuctions.address.AddressService;
@@ -17,8 +17,9 @@ import pl.reverseAuctions.category.CategoryService;
 import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.offer.OfferService;
 import pl.reverseAuctions.subcategory.Subcategory;
+import pl.reverseAuctions.validator.UserRegisterValidationGroup;
 
-import javax.validation.Valid;
+import javax.validation.groups.Default;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,8 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public String saveNewUser(@Valid User user, BindingResult bindingResult) {
+    public String saveNewUser(@Validated({UserRegisterValidationGroup.class, Default.class}) User user,
+                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "signUpPage";
         }

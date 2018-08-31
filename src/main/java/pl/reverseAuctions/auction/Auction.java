@@ -8,10 +8,12 @@ import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.subcategory.Subcategory;
 import pl.reverseAuctions.user.User;
 import pl.reverseAuctions.validator.FutureDate;
+import pl.reverseAuctions.validator.NewAuctionValidationGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -43,10 +45,10 @@ public class Auction {
     private User user;
 
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
     @Setter(AccessLevel.NONE)
     @Column(name = "auction_created", updatable = false)
-    private LocalDate created;
+    private LocalDateTime created;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Setter(AccessLevel.NONE)
@@ -58,7 +60,7 @@ public class Auction {
     @Column(name = "auction_start_time")
     private LocalDate startTime;
 
-    @FutureDate(message = "Podaj przyszłą datę")
+    @FutureDate(message = "Podaj przyszłą datę", groups = NewAuctionValidationGroup.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "Data nie może być pusta")
     @Column(name = "auction_end_time")
@@ -79,7 +81,7 @@ public class Auction {
     @PrePersist
     void created() {
         this.view = 0L;
-        this.created = LocalDate.now();
+        this.created = LocalDateTime.now();
     }
 
     @PreUpdate

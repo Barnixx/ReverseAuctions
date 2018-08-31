@@ -68,6 +68,11 @@
                                     <td>
                                         <a th:href="@{/getAuction/{id} (id = ${auction.id})}" class="w-100 h-100">
                                             <div th:text="${auction.endTime}" class="align-middle w-100 h-100"></div>
+
+                                            <div th:with="days=${T(java.time.temporal.ChronoUnit).DAYS}"
+                                                 th:text="'Do końca pozostało ' + ${days.between(#temporals.createToday(), auction.endTime)} + ' dni'"
+                                                 class="align-middle w-100 h-100"></div>
+
                                         </a>
                                     </td>
                                 </tr>
