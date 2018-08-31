@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS = #{app.pageCSS.showOffer}">
+<body>
+<section layout:fragment="content">
+    <div class="p-3 bd-highlight"></div>
+    <div class="container">
+        <div th:text="${offer.title}" class="py-1 bd-highlight values"></div>
+        <div class="d-flex flex-row">
+            <div class="w-50 names">
+                <img src="" th:text="'Miejsce na zdjęcie'">
+            </div>
+            <div class="body">
+                <div th:text="'Użytkownik:' + ${offer.user.username}" class="py-2 names"></div>
+                <div th:text="'Cena:' + ${#numbers.formatDecimal((offer.price), 1, 2)} + ' PLN'" class="py-2 names"></div>
+                <div th:text="'Dodana:' + ${offer.created}" class="py-2 names"></div>
+                <div th:if="${offer.updated == null}" th:text="'Uaktualniona:' + '-'" class="py-2 names"></div>
+                <div th:if="${offer.updated != null}" th:text="${offer.updated}" class="py-2 values"></div>
+            </div>
+        </div>
+        <div class="py-2 body names w-100">
+            <div class="p-1" th:utext="'Opis:'"></div>
+            <div th:utext="${offer.description}"></div>
+        </div>
+        <div class="mid">
+            <a th:href="@{/getAuction/{id}(id=${offer.auction.id})}" class="mid">
+                <div th:text="'Cofnij'" class="py-2 btn btn-warning rounded-0 font-weight-bold mid"></div>
+            </a>
+        </div>
+    </div>
+    <div class="py-1 bd-highlight"></div>
+</section>
+</body>
+</html>

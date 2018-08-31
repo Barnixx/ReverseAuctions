@@ -47,4 +47,5 @@ public class OfferServiceImpl implements OfferService {
     public List<Offer> getOfferByAuctionId(Long id) {
         return offerRepository.findByAuctionIdOrderByPriceAsc(id);
     }
+
 }

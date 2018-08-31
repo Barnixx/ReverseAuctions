@@ -2,6 +2,7 @@ package pl.reverseAuctions.offer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import pl.reverseAuctions.user.User;
 
 import javax.transaction.Transactional;
 import java.util.List;

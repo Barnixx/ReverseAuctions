@@ -14,8 +14,8 @@
 
 .names {
     text-align: center;
-    background-color: #d4d4d4;
-    border: solid black 1px;
+    background-color: white;
+    border: solid #d4d4d4 1.5px;
 }
 
 .title {
@@ -33,4 +33,7 @@
 
 .blue {
     background-color: blue;
+}
+.button{
+    text-align: center;
 }

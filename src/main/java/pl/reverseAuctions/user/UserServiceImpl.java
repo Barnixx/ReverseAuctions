@@ -2,6 +2,7 @@ package pl.reverseAuctions.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.reverseAuctions.offer.OfferRepository;
 import pl.reverseAuctions.role.Role;
 import pl.reverseAuctions.role.RoleRepository;
 
@@ -16,13 +17,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final OfferRepository offerRepository;
 
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           BCryptPasswordEncoder passwordEncoder) {
+                           BCryptPasswordEncoder passwordEncoder, OfferRepository offerRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.offerRepository = offerRepository;
     }
 
     @Override
@@ -69,4 +72,5 @@ public class UserServiceImpl implements UserService {
     public Boolean isUserMailExist(String mail) {
         return userRepository.countByMail(mail) <= 0;
     }
+
 }
