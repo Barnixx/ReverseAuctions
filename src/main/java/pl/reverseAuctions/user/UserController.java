@@ -1,5 +1,6 @@
 package pl.reverseAuctions.user;
 
+import lombok.extern.java.Log;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,7 @@ import pl.reverseAuctions.subcategory.Subcategory;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
-
+@Log
 @Controller
 public class UserController {
 
@@ -97,5 +98,48 @@ public class UserController {
     private String createAuction(){
         return "redirect:/new-auction";
     }
+
+    @GetMapping("/user/edit-profile")
+    private String editProfile(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "user-profile-edit";
+    }
+
+    @PostMapping("/user/edit-profile")
+    private String alternate(@ModelAttribute User user, @AuthenticationPrincipal CurrentUser currentUser){
+        currentUser.getUser().setFirstName(user.getFirstName());
+        currentUser.getUser().setLastName(user.getLastName());
+        currentUser.getUser().setMail(user.getMail());
+        currentUser.getUser().setPhoneNumber(user.getPhoneNumber());
+        currentUser.getUser().setBirth(user.getBirth());
+        userService.update(currentUser.getUser());
+        return "user-profile-confirm";
+    }
+
+    @GetMapping("/user/delete-address/{id}")
+    private String editAddress(Model model, @PathVariable Long id, @AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        addressService.delete(id);
+        return "user-profile-confirm";
+    }
+
+    @GetMapping("/user/add-address")
+    private String addAddress(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        Address address = new Address();
+        model.addAttribute("address", address);
+        return "user-address-add";
+    }
+
+    @PostMapping("/user/add-address")
+    private String createAddress(@ModelAttribute Address address, @AuthenticationPrincipal CurrentUser currentUser) {
+        address.setUser(currentUser.getUser());
+        addressService.save(address);
+        return "user-profile-confirm";
+    }
+
 
 }

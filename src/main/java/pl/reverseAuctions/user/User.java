@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.reverseAuctions.role.Role;
 import pl.reverseAuctions.validator.ConfirmPassword;
 
@@ -20,7 +21,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfirmPassword
+//@ConfirmPassword
 @Entity
 @Table(name = "users")
 public class User {
@@ -60,6 +61,7 @@ public class User {
     @Size(min = 2, max = 150)
     private String lastName;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birth;
 
     @Length(max = 50)

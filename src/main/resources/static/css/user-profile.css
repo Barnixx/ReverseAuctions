@@ -95,27 +95,28 @@
 }
 
 .user-detail-info {
-    height: 400px;
+    height: 350px;
     width: 500px;
     float: left;
     padding-left: 2%;
-    margin-left: 30px;
     margin-right: 30px;
     background-color: antiquewhite;
+    border: 1px solid black;
 }
 
 .user-detail-address {
     float: left;
-    background-color: antiquewhite;
-    height: 400px;
+    height: 350px;
     width: 500px;
     padding: 1% 1% 1%;
     margin-right: 30px;
+    background-color: antiquewhite;
+    border: 1px solid black;
     overflow-y: scroll;
 }
 
 #user-profile-login {
-    padding: 2% 2%;
+    padding: 20px 40px;
 }
 
 .user-detail {
@@ -125,22 +126,34 @@
     padding-left: 20px;
 }
 
-.user-detail-table {
+.user-detail-table, .user-detail-table-edit {
     text-align: right;
     border: 1px solid antiquewhite;
     width: 350px;
-    margin-top: 50px;
-    margin-left: 20px;
+    margin-top: 70px;
+    margin-left: 50px;
 
 }
 
+.user-detail-table {
+    border-collapse: separate;
+    border-spacing: 3px;
+}
+
 .user-detail-table tr {
+    border: 1px solid antiquewhite;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.user-detail-table-edit tr {
     border: 1px solid antiquewhite;
     vertical-align: middle;
 }
 
 .user-detail-table td {
     font-size: 20px;
+    height: 25px;
     border: 1px solid antiquewhite;
     background-color: antiquewhite;
     vertical-align: middle;
@@ -152,6 +165,24 @@
     text-align: left;
     font-weight: bold;
     padding-left: 20px;
+}
+
+.user-detail-data-edit {
+    font-size: 18px;
+    color: black;
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 5px;
+    size: 15px;
+    width: 200px;
+    margin-left: 20px;
+}
+
+.user-detail-date-edit {
+    size: 15px;
+    width: 200px;
+    /*margin-left: -100px;*/
+
 }
 
 .address-table {
@@ -187,9 +218,9 @@
     overflow-x: paged-x;
 }
 
-#address-hover div:hover {
-    box-shadow: 0 0 5px 5px rgba(0,0,0, 0.5);
-}
+/*#address-hover div:hover {*/
+    /*box-shadow: 0 0 5px 5px rgba(0,0,0, 0.5);*/
+/*}*/
 
 #address-detail-head {
     size: 22px;
@@ -279,4 +310,157 @@ a:hover {
     width: 200px;
     padding-left: 30px;
     display: inline-block;
+}
+
+.link-button {
+    background-color: white;
+    color: grey;
+    border: 2px solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+    display: inline-block;
+    z-index: 1;
+}
+
+.link-button-confirmation {
+    background-color: white;
+    color: grey;
+    border: 2px solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 50%;
+    display: inline-block;
+    z-index: 1;
+    vertical-align: middle;
+}
+
+
+.link-button:hover {
+    color: blue;
+}
+
+.link-button-confirmation:hover {
+    color: blue;
+}
+
+.link-button-address {
+    background-color: white;
+    color: grey;
+    border: 2px solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 50px;
+    float: right;
+    display: inline-block;
+    z-index: 1;
+}
+
+.link-button-delete-address {
+    background-color: white;
+    color: grey;
+    border: 2px solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    /*margin-top: -60px;*/
+    margin-right: 30px;
+    float: right;
+    display: inline-block;
+    z-index: 1;
+}
+
+.link-button-address:hover {
+    color: blue;
+}
+
+.link-button-delete-address:hover {
+    color: blue;
+}
+
+.user-detail-info-back {
+    height: 350px;
+    width: 500px;
+    float: left;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.user-detail-address-back {
+    height: 350px;
+    width: 500px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.user-edit-form {
+    margin-left: 30px;
+}
+
+.edit-confirmation {
+    text-align: center;
+    margin-top: 200px;
+    font-size: 30px;
+}
+
+.user-detail-address-useredit {
+    float: left;
+    height: 350px;
+    width: 500px;
+    padding: 1% 1% 1%;
+    margin-right: 30px;
+    background-color: antiquewhite;
+    border: 1px solid black;
+}
+
+.user-address-table-edit {
+    text-align: right;
+    border: 1px solid antiquewhite;
+    width: 350px;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.user-address-table-edit tr {
+    border: 1px solid antiquewhite;
+    vertical-align: middle;
+}
+
+.user-address-table-edit td {
+    font-size: 20px;
+    height: 25px;
+    border: 1px solid antiquewhite;
+    background-color: antiquewhite;
+    vertical-align: middle;
+}
+
+.link-button-add {
+    background-color: white;
+    color: grey;
+    border: 2px solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+    display: inline-block;
+    z-index: 1;
+}
+
+.link-button-add:hover {
+    color: blue;
+}
+
+.address-delete {
+    margin-top: 110px;
+    margin-right: 20px;
 }

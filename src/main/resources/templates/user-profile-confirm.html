@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org"
+              xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+              layout:decorator="/layouts/mainPage"
+              th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.userProfile}">
+
+<body>
+<section layout:fragment="content">
+
+    <!-- Side navigation -->
+    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
+
+    <div th:include="fragments/userProfileConfirmation :: userProfileConfirmation"></div>
+
+</section>
+</body>
+</html>
