@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.userProfile}">
+
+<body>
+<section layout:fragment="content">
+    <section
+    <!-- Side navigation -->
+    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
+
+    <!-- Page content -->
+    <div class="user-profile-main">
+        <h1 id="user-profile-login" th:text="${user.username}">User_Login</h1>
+
+        <div class="user-detail-info-back">
+            <div class="user-detail-info">
+
+            </div>
+        </div>
+
+
+        <div class="user-detail-address-back">
+
+                    <form th:action="@{/user/add-address}" th:object="${address}" method="post">
+                <div class="user-detail-address-useredit">
+                    <table class="user-address-table-edit">
+                        <colgroup>
+                            <col span="2">
+                        </colgroup>
+                        <tr>
+                            <td><h5 class="user-detail">ULICA: </h5></td>
+                            <td><input type="text" class="user-detail-data-edit" th:field="*{street}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h5 class="user-detail">KOD&nbsp;POCZTOWY: </h5></td>
+                            <td><input type="text" class="user-detail-data-edit" th:field="*{postalCode}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h5 class="user-detail">MIASTO: </h5></td>
+                            <td><input type="text" class="user-detail-data-edit" th:field="*{city}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h5 class="user-detail">KRAJ: </h5></td>
+                            <td><input type="text" class="user-detail-data-edit" th:field="*{country}"/></td>
+                        </tr>
+                    </table>
+                    </div>
+            <input type="submit" class="link-button-address" value="Dodaj"/>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

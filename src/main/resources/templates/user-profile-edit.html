@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layouts/mainPage"
+      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS=#{app.pageCSS.userProfile}">
+
+<body>
+<section layout:fragment="content">
+    <section
+    <!-- Side navigation -->
+    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
+
+    <!-- Page content -->
+    <div class="user-profile-main">
+        <h1 id="user-profile-login" th:text="${user.username}">User_Login</h1>
+
+        <div class="user-detail-info-back">
+                <form th:action="@{/user/edit-profile}" th:object="${user}" method="post">
+            <div class="user-detail-info">
+                <table class="user-detail-table-edit">
+                    <colgroup>
+                        <col span="2">
+                    </colgroup>
+                    <tr>
+                        <td><h5 class="user-detail">IMIĘ: </h5></td>
+                        <td><input type="text" class="user-detail-data-edit" th:field="*{firstName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="user-detail">NAZWISKO: </h5></td>
+                        <td><input type="text" class="user-detail-data-edit" th:field="*{lastName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="user-detail">E-MAIL: </h5></td>
+                        <td><input type="email" class="user-detail-data-edit" th:field="*{mail}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="user-detail">TELEFON: </h5></td>
+                        <td><input type="tel" class="user-detail-data-edit" th:field="*{phoneNumber}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="user-detail">URODZINY: </h5></td>
+                        <td><input type="date" class="user-detail-date-edit" th:field="*{birth}"/></td>
+                    </tr>
+                </table>
+            </div>
+                    <input type="submit" class="link-button" value="Aktualizuj"/>
+                </form>
+        </div>
+
+        <div class="user-detail-address-back">
+            <div class="user-detail-address-useredit">
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
