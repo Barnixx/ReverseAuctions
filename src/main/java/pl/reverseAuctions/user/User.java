@@ -23,7 +23,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfirmPassword(message = "Hasła są różne")
+@ConfirmPassword(message = "Hasła są różne", groups = UserRegisterValidationGroup.class)
 @Entity
 @Table(name = "users")
 public class User {

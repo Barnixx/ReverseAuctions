@@ -38,6 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
+        user.setRepeatPassword(user.getPassword());
+        System.out.println(user);
         userRepository.save(user);
     }
 
