@@ -165,6 +165,16 @@
     text-align: left;
     font-weight: bold;
     padding-left: 20px;
+
+}
+
+.user-detail-data-email {
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 20px;
+
 }
 
 .user-detail-data-edit {

@@ -45,7 +45,6 @@ public class Offer {
     private Auction auction;
 
     @Setter(AccessLevel.NONE)
-    @NotNull
     @Column(name = "offer_created")
     private LocalDateTime created;
 

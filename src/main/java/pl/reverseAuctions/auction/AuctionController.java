@@ -105,15 +105,18 @@ public class AuctionController {
     @GetMapping("/getAuction/{id}/addOffer")
     public String addOffer(@PathVariable("id") Long id, Model model){
         model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
-        model.addAttribute("auction", auctionService.getById(id));
+        //model.addAttribute("auction_id", auctionService.getById(id));
         model.addAttribute("offer", new Offer());
         return "addOffer";
     }
 
     @PostMapping("/getAuction/{id}/addOffer")
-    public String addNewOffer(@ModelAttribute Offer offer, @ModelAttribute Auction auction, @AuthenticationPrincipal CurrentUser currentUser){
-        offer.setAuction(auction);
+    public String addNewOffer(@ModelAttribute Offer offer, @PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser){
+//        offer.setAuction(auction);
+        offer.setId(null);
+        offer.setAuction(auctionService.getById(id));
         offer.setUser(currentUser.getUser());
+        System.out.println(offer);
         offerService.save(offer);
         return "redirect:/getAuction/" + offer.getAuction().getId();
 
