@@ -1,14 +1,16 @@
-.userLoginPanel {
-    background-color: white;
+.container-fluid {
+
 }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/*NAVBAR*/
 
 .sidenav {
     box-shadow: 0 0 20px 10px rgba(0,0,0, 0.25);
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 250px;
-    left: 30px;
+    margin-top: 60%;
+    width: 100%;
     background-color: white;
     overflow-x: hidden;
     padding-top: 20px;
@@ -33,22 +35,109 @@
     background-color: blue;
 }
 
-/* Style page content */
-.user-main {
-    margin-top: 10px;
-    margin-right: 20px;
-    padding-top: 10px;
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/*MAIN PAGE*/
+
+.main-background {
+    display: inline-block;
+    background-color: red;
+    height: 100%;
+    width: 100%;
 }
 
-.main-back {
-    box-shadow: 0 20px 10px rgba(0,0,0, 0.25);
-    background-color: white;
-    margin-left: 330px;
-    width: 1100px;
-    height: 470px;
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+/*USER-PROFILE*/
+
+#user-profile-login {
+    background-color: blue;
+    padding-top: 2%;
+}
+
+.user-detail-info {
+    height: 500px;
+    width: 100%;
+    padding: 1% 1% 1%;
+    background-color: yellow;
+    border: 1px solid black;
     overflow-y: scroll;
-
 }
+
+.user-detail-address {
+    height: 500px;
+    width: 100%;
+    padding: 1% 1% 1%;
+    /*margin-left: 5%;*/
+    background-color: yellow;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/*MY-AUCTIONS*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/*MY-OFFERS*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+/*.user-main {*/
+    /*margin-top: 10px;*/
+    /*margin-right: 20px;*/
+    /*padding-top: 10px;*/
+/*}*/
+
+/*.main-back {*/
+    /*box-shadow: 0 20px 10px rgba(0,0,0, 0.25);*/
+    /*background-color: white;*/
+    /*margin-left: 330px;*/
+    /*width: 1100px;*/
+    /*height: 470px;*/
+    /*overflow-y: scroll;*/
+
+/*}*/
 
 #user-new-auction-button {
     font-weight: bold;
@@ -85,39 +174,13 @@
     box-shadow: 0 0 5px 5px rgba(0,0,0, 0.3);
 }
 
-.user-profile-main {
-    display: inline-block;
-    background-color: white;
-    height: 550px;
-    width: 1100px;
-    margin-top: 20px;
-    margin-left: 320px;
-}
 
-.user-detail-info {
-    height: 350px;
-    width: 500px;
-    float: left;
-    padding-left: 2%;
-    margin-right: 30px;
-    background-color: antiquewhite;
-    border: 1px solid black;
-}
 
-.user-detail-address {
-    float: left;
-    height: 350px;
-    width: 500px;
-    padding: 1% 1% 1%;
-    margin-right: 30px;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    overflow-y: scroll;
-}
 
-#user-profile-login {
-    padding: 20px 40px;
-}
+
+
+
+
 
 .user-detail {
     font-size: 20px;
@@ -395,9 +458,9 @@ a:hover {
 }
 
 .user-detail-info-back {
-    height: 350px;
-    width: 500px;
-    float: left;
+    /*height: 350px;*/
+    /*width: 500px;*/
+    /*float: left;*/
     padding-left: 20px;
     margin-left: 10px;
     margin-right: 30px;

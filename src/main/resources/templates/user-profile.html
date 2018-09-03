@@ -7,94 +7,156 @@
 <body>
 <section layout:fragment="content">
 
-    <!-- Side navigation -->
-    <div th:include="fragments/userProfileNavbar ::	userProfileNavbar"></div>
 
-    <!-- Page content -->
-    <div class="user-profile-main">
-        <h1 id="user-profile-login" th:text="${user.username}">User_Login</h1>
+    <div class="container-fluid">
+        <div class="row">
 
-        <div class="user-detail-info-back">
-            <div class="user-detail-info">
-                <table class="user-detail-table">
-                    <colgroup>
-                        <col span="2">
-                    </colgroup>
-                    <tr>
-                        <td><h5 class="user-detail">IMIĘ:</h5></td>
-                        <td><h5 class="user-detail-data" th:text="${user.firstName}">FirstName</h5></td>
-                    </tr>
-                    <tr>
-                        <td><h5 class="user-detail">NAZWISKO:</h5></td>
-                        <td><h5 class="user-detail-data" th:text="${user.lastName}">LastName</h5></td>
-                    </tr>
-                    <tr>
-                        <td><h5 class="user-detail">E-MAIL:</h5></td>
-                        <td><h5 class="user-detail-data-email" th:text="${user.mail}">E-Mail@user.mail</h5></td>
-                    </tr>
-                    <tr>
-                        <td><h5 class="user-detail">TELEFON:</h5></td>
-                        <td><h5 class="user-detail-data" th:text="${user.phoneNumber}">555-999-007</h5></td>
-                    </tr>
-                    <tr>
-                        <td><h5 class="user-detail">URODZINY:</h5></td>
-                        <td><h5 class="user-detail-data" th:text="${user.birth}">1970-01-01</h5></td>
-                    </tr>
-                </table>
-            </div>
-            <a href="/user/edit-profile" class="link-button"> Edytuj </a>
-        </div>
 
-        <div class="user-detail-address-back">
-            <div class="user-detail-address">
+                <!-- Side navigation -->
+            <div class="col-2" th:include="fragments/userProfileNavbar :: userProfileNavbar"></div>
 
-                <div id="address-hover" th:each="address: ${addressList}">
-                    <div class="user-address" id="user-address">
-                        <table class="address-table">
-                            <colgroup>
-                                <col width="150">
-                                <col width="250">
-                            </colgroup>
-                            <tr>
-                                <td><h5 id="address-detail-head">&lt;NAZWA&gt;</h5></td>
-                            </tr>
-                            <tr>
-                                <td><h6 class="address-detail">ULICA:</h6></td>
-                                <td><h6 class="address-data" th:text="${address.street}">Street</h6></td>
-                            </tr>
-                            <tr>
-                                <td><h6 class="address-detail">KOD&nbsp;POCZTOWY:</h6></td>
-                                <td><h6 class="address-data" th:text="${address.postalCode}">87-100</h6></td>
-                            </tr>
-                            <tr>
-                                <td><h6 class="address-detail">MIASTO:</h6></td>
-                                <td><h6 class="address-data" th:text="${address.city}">City</h6></td>
-                            </tr>
-                            <tr>
-                                <td><h6 class="address-detail">KRAJ:</h6></td>
-                                <td><h6 class="address-data" th:text="${address.country}">Country</h6></td>
-                            </tr>
-                        </table>
+
+            <div class="col-9">
+
+                <div class="container-fluid">
+                    <div class="row upper-margin">
+                        Górny rząd
+                        <br/> Górny rząd
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row">
+
+                            <!--Main Page-->
+                        <div class="col-12 main-background">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h1 id="user-profile-login" th:text="${user.username}">User_Login</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"> m1</div>
+                                    <div class="col-10">
+                                        Main
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-6 user-detail-info">
+                                                    USER INFO
+                                                </div>
+                                                <div class="col-6 user-detail-address">
+                                                    ADDRESS
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1"> m2</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"> Down</div>
+                                </div>
 
 
 
-                        <!--<form class="address-delete" th:action="@{/user/delete-address}" th:object="${address}"-->
-                              <!--method="post">-->
-                            <!--&lt;!&ndash;<input type="hidden" th:field="*{id}"/>&ndash;&gt;-->
-                            <!--<input type="submit" class="link-button" value="Usuń"/>-->
-                        <!--</form>-->
-                        <h6><a th:href="@{'/user/delete-address/' + ${address.id}} "
-                               class="link-button-delete-address">Usuń</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        Dolny rząd
+                        <div class="col-1"></div>
                     </div>
                 </div>
             </div>
-
-            <!--<a href="/user/delete-address" class="link-button-address"> &nbsp;Zmień&nbsp;</a>-->
-            <a href="/user/add-address" class="link-button-address"> Dodaj </a>
-
+            <div class="col-1">
+                Margin
+            </div>
         </div>
-
     </div>
+
+
+    <!-- Page content -->
+    <!--<div class="container-fluid">-->
+    <!--<h1 id="user-profile-login" th:text="${user.username}">User_Login</h1>-->
+    <!--<div class="user-detail-info-back">-->
+    <!--<div class="user-detail-info">-->
+
+    <!--<table class="user-detail-table">-->
+    <!--<colgroup>-->
+    <!--<col span="2">-->
+    <!--</colgroup>-->
+    <!--<tr>-->
+    <!--<td><h5 class="user-detail">IMIĘ:</h5></td>-->
+    <!--<td><h5 class="user-detail-data" th:text="${user.firstName}">FirstName</h5></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h5 class="user-detail">NAZWISKO:</h5></td>-->
+    <!--<td><h5 class="user-detail-data" th:text="${user.lastName}">LastName</h5></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h5 class="user-detail">E-MAIL:</h5></td>-->
+    <!--<td><h5 class="user-detail-data-email" th:text="${user.mail}">E-Mail@user.mail</h5></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h5 class="user-detail">TELEFON:</h5></td>-->
+    <!--<td><h5 class="user-detail-data" th:text="${user.phoneNumber}">555-999-007</h5></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h5 class="user-detail">URODZINY:</h5></td>-->
+    <!--<td><h5 class="user-detail-data" th:text="${user.birth}">1970-01-01</h5></td>-->
+    <!--</tr>-->
+    <!--</table>-->
+    <!--</div>-->
+    <!--<a href="/user/edit-profile" class="link-button"> Edytuj </a>-->
+    <!--</div>-->
+
+    <!--<div class="user-detail-address-back">-->
+    <!--<div class="user-detail-address">-->
+
+    <!--<div id="address-hover" th:each="address: ${addressList}">-->
+    <!--<div class="user-address" id="user-address">-->
+    <!--<table class="address-table">-->
+    <!--<colgroup>-->
+    <!--<col width="150">-->
+    <!--<col width="250">-->
+    <!--</colgroup>-->
+    <!--<tr>-->
+    <!--<td><h5 id="address-detail-head">&lt;NAZWA&gt;</h5></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h6 class="address-detail">ULICA:</h6></td>-->
+    <!--<td><h6 class="address-data" th:text="${address.street}">Street</h6></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h6 class="address-detail">KOD&nbsp;POCZTOWY:</h6></td>-->
+    <!--<td><h6 class="address-data" th:text="${address.postalCode}">87-100</h6></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h6 class="address-detail">MIASTO:</h6></td>-->
+    <!--<td><h6 class="address-data" th:text="${address.city}">City</h6></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><h6 class="address-detail">KRAJ:</h6></td>-->
+    <!--<td><h6 class="address-data" th:text="${address.country}">Country</h6></td>-->
+    <!--</tr>-->
+    <!--</table>-->
+
+
+    <!--&lt;!&ndash;<form class="address-delete" th:action="@{/user/delete-address}" th:object="${address}"&ndash;&gt;-->
+    <!--&lt;!&ndash;method="post">&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<input type="hidden" th:field="*{id}"/>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="submit" class="link-button" value="Usuń"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</form>&ndash;&gt;-->
+    <!--<h6><a th:href="@{'/user/delete-address/' + ${address.id}} "-->
+    <!--class="link-button-delete-address">Usuń</a></h6>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<a href="/user/delete-address" class="link-button-address"> &nbsp;Zmień&nbsp;</a>&ndash;&gt;-->
+    <!--<a href="/user/add-address" class="link-button-address"> Dodaj </a>-->
+
+    <!--</div>-->
+
+    <!--</div>-->
 </section>
 
 </body>

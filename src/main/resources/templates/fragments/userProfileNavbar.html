@@ -2,16 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">>
 <body>
 
-<div th:fragment="userProfileNavbar" class="sidenav-back">
-    <div class="sidenav">
-        <a href="/user" id="user-profile-button">Profil</a>
-        <a href="/addAuction" id="user-new-auction-button">NOWA AUKCJA</a>
-        <a href="/user/my-auctions" id="user-my-auctions-button">Moje Aukcje</a>
-        <a href="/user/my-offers" id="user-my-offers-button">Moje Oferty</a>
-        <a href="#" id="user-informations-button">Informacje</a>
-        <a href="#" id="user-properties-button">Ustawienia</a>
-        <br/>
-        <a href="#" id="user-logout-button">Wyloguj</a>
+<div th:fragment="userProfileNavbar" class="container-fluid">
+    <div class="row">
+        <!--<div class="col-xl-1"></div>-->
+        <div class="col-xl-11">
+            <div class="sidenav">
+                <a href="/user" id="user-profile-button">Profil</a>
+                <a href="/addAuction" id="user-new-auction-button">NOWA AUKCJA</a>
+                <a href="/user/my-auctions" id="user-my-auctions-button">Moje Aukcje</a>
+                <a href="/user/my-offers" id="user-my-offers-button">Moje Oferty</a>
+                <a href="#" id="user-informations-button">Informacje</a>
+                <a href="#" id="user-properties-button">Ustawienia</a>
+                <br/>
+                <a href="#" id="user-logout-button">Wyloguj</a>
+            </div>
+        </div>
+        <div class="col-xl-1"></div>
+
     </div>
 </div>
 
