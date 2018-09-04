@@ -1,4 +1,4 @@
-package pl.reverseAuctions;
+package pl.reverseAuctions.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,12 +20,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 "/css/**",
                 "/js/**",
                 "/bootstrap/**",
+                "/adminPage/**",
                 "/jquery/**")
                 .addResourceLocations(
                         "classpath:/static/img/",
                         "classpath:/static/css/",
                         "classpath:/static/js/",
                         "classpath:/static/bootstrap/",
+                        "classpath:/static/adminPage/",
                         "classpath:/static/jquery/");
     }
 

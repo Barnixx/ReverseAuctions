@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.reverseAuctions.auction.attribiute.AttributeValue;
 import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.subcategory.Subcategory;
 import pl.reverseAuctions.user.User;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -77,6 +79,15 @@ public class Auction {
 
     @Column(name = "auction_imageUrl")
     private String imageUrl;
+
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "auction_attribute_value",
+            joinColumns = {@JoinColumn(name = "auction_id")},
+            inverseJoinColumns = {@JoinColumn(name = "attribute_value_id")}
+    )
+    private List<AttributeValue> attributeValues;
 
     @PrePersist
     void created() {

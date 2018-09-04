@@ -4,12 +4,14 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import pl.reverseAuctions.auction.Auction;
+import pl.reverseAuctions.auction.attribiute.AttributeValue;
 import pl.reverseAuctions.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -54,6 +56,14 @@ public class Offer {
 
     @Column(name = "offer_is_active")
     private boolean isActive;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "offer_attribute_value",
+            joinColumns = {@JoinColumn(name = "offer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "attribute_value_id")}
+    )
+    private List<AttributeValue> attributeValues;
 
     @PrePersist
     void created() {

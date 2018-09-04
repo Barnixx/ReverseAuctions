@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link th:href="@{/adminPage/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link th:href="@{/adminPage/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link th:href="@{/adminPage/dist/css/sb-admin-2.css}" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link th:href="@{/adminPage/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav th:replace="fragments/admin/admin-navbar::navbar"></nav>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Dodaj Kategorie</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Dodaj Kategorie
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <form role="form" th:method="post" th:object="${category}">
+                                            <div class="form-group">
+                                                <label>Nazwa Kategori</label>
+                                                <input th:field="*{categoryName}" class="form-control"
+                                                       placeholder="Nazwa Kategorii">
+                                                <p class="help-block">Podaj nazwę kategorii</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Aktywna</label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadiosInline"
+                                                           id="optionsRadiosInline1" value="option1" checked>TAK
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadiosInline"
+                                                           id="optionsRadiosInline2" value="option2">NIE
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Kategorie</label>
+                                                <select id="category_select" class="form-control selectpicker"
+                                                        data-live-search="true">
+                                                    <option>Wybierz kategorie</option>
+                                                    <option th:each="rootCategory:${rootCategories}"
+                                                            th:text="${rootCategory.categoryName}"
+                                                            th:value="${rootCategory.id}"></option>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Podkategorie</label>
+                                                <select th:field="*{parentCategory}" id="subcategory_select"
+                                                        class="form-control selectpicker" data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Opis Kategorii</label>
+                                                <textarea th:field="*{categoryDescription}" class="form-control"
+                                                          rows="3"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                                            <button type="reset" class="btn btn-warning">Zresetuj</button>
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                    <!-- /.col-lg-6 (nested) -->
+                                </div>
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script th:src="@{/adminPage/vendor/jquery/jquery.min.js}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script th:src="@{/adminPage/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script th:src="@{/adminPage/vendor/metisMenu/metisMenu.min.js}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script th:src="@{/adminPage/dist/js/sb-admin-2.js}"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-pl_PL.min.js"></script>
+        <script th:src="@{/js/selectSubcategory.js}"></script>
+
+    </body>
+
+</html>

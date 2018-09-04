@@ -1,13 +1,12 @@
 package pl.reverseAuctions.category;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.reverseAuctions.subcategory.Subcategory;
 import pl.reverseAuctions.subcategory.SubcategoryService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,5 +60,20 @@ public class CategoryServiceImpl implements CategoryService {
                     .collect(Collectors.toList()));
         }
         return subcategoryMap;
+    }
+
+    @Override
+    public Page<Category> getAll(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
+    }
+
+    @Override
+    public LinkedHashSet<Category> getRootCategory() {
+        return categoryRepository.findByParentCategoryIsNull();
+    }
+
+    @Override
+    public LinkedHashSet<Category> getSubCategory(Long id) {
+        return categoryRepository.findByParentCategory_Id(id);
     }
 }

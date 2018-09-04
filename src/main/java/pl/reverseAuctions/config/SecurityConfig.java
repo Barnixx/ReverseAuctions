@@ -1,4 +1,4 @@
-package pl.reverseAuctions;
+package pl.reverseAuctions.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
