@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+<!--/*@thymesVar id="categories" type="java.util.LinkedHashSet"*/-->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="/layouts/mainPage"
-      th:with="pageTitle = #{app.main.signIn}, subcategoriesMap = ${subcategoriesMap}">
+      th:with="pageTitle = #{app.main.signIn}, categories = ${categories}">
     <body>
         <section layout:fragment="content">
             <div th:replace="fragments/signInForm::signInForm">

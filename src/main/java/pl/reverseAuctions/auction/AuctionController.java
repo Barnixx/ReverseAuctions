@@ -14,6 +14,7 @@ import pl.reverseAuctions.category.CategoryService;
 import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.offer.OfferService;
 import pl.reverseAuctions.user.CurrentUser;
+import pl.reverseAuctions.user.UserService;
 import pl.reverseAuctions.validator.NewAuctionValidationGroup;
 
 import javax.validation.groups.Default;
@@ -26,9 +27,9 @@ public class AuctionController {
     private final CategoryService categoryService;
     private final AuctionService auctionService;
     private final OfferService offerService;
-    private final OfferService userService;
+    private final UserService userService;
 
-    public AuctionController(CategoryService categoryService, AuctionService auctionService, OfferService offerService, OfferService userService) {
+    public AuctionController(CategoryService categoryService, AuctionService auctionService, OfferService offerService, UserService userService) {
         this.categoryService = categoryService;
         this.auctionService = auctionService;
         this.offerService = offerService;
@@ -37,7 +38,7 @@ public class AuctionController {
 
     @GetMapping("/auctionList")
     public String getAutions(Model model) {
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         model.addAttribute("auctionsList", auctionService.getAll());
         return "auctionList";
     }
@@ -49,7 +50,7 @@ public class AuctionController {
         auctionService.save(auction);
         model.addAttribute("auction", auction);
         model.addAttribute("offerList", offerService.getOfferByAuctionId(id));
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         return "auction";
     }
 
@@ -58,7 +59,8 @@ public class AuctionController {
     public String addAuction(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
 
         model.addAttribute("auction", new Auction());
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
+        model.addAttribute("rootCategories", categoryService.getRootCategory());
         return "addAuction";
     }
 
@@ -73,7 +75,7 @@ public class AuctionController {
 
         auction.setUser(currentUser.getUser());
         if (bindingResult.hasErrors()) {
-            model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+            model.addAttribute("categories", categoryService.getRootCategory());
             System.out.println(auction);
             return "addAuction";
         }
@@ -86,7 +88,7 @@ public class AuctionController {
     public String search(Model model, @RequestParam(required = false, defaultValue = "0") Long categoryId,
                          @RequestParam(required = false) String auctionName, @SortDefault("name") Pageable pageable) {
 
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         if (categoryId == 0 && !auctionName.equals("")) {
             model.addAttribute("page", auctionService.getAuctionsByName(auctionName, pageable));
             System.out.println("PIERWSZY IF");
@@ -104,7 +106,7 @@ public class AuctionController {
 
     @GetMapping("/getAuction/{id}/addOffer")
     public String addOffer(@PathVariable("id") Long id, Model model){
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         //model.addAttribute("auction_id", auctionService.getById(id));
         model.addAttribute("offer", new Offer());
         return "addOffer";
@@ -126,7 +128,7 @@ public class AuctionController {
     public String showOffer(Model model, @PathVariable("id") Long id){
         model.addAttribute("offer", offerService.getById(id));
         model.addAttribute("user", offerService.getById(id).getUser());
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         return "showOffer";
     }
 }

@@ -10,8 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,7 +32,6 @@ public class Category {
     @NotBlank
     @Length(max = 250)
     @Column(name = "category_description", columnDefinition = "TEXT", length = 200)
-    @JsonIgnore
     private String categoryDescription;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,6 +42,8 @@ public class Category {
     @JsonIdentityReference(alwaysAsId = true)
     private Category parentCategory;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany(
             mappedBy = "parentCategory",
             cascade = CascadeType.ALL,

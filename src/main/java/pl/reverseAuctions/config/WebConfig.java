@@ -21,14 +21,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 "/js/**",
                 "/bootstrap/**",
                 "/adminPage/**",
-                "/jquery/**")
+                "/jquery/**",
+                "/webjars/**")
                 .addResourceLocations(
                         "classpath:/static/img/",
                         "classpath:/static/css/",
                         "classpath:/static/js/",
                         "classpath:/static/bootstrap/",
                         "classpath:/static/adminPage/",
-                        "classpath:/static/jquery/");
+                        "classpath:/static/jquery/",
+                        "/webjars/");
     }
 
     @Override

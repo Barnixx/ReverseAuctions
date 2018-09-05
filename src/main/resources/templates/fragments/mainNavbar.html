@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <body>
-<nav th:fragment="mainNavbar (subcategoriesMap)"
-     class="navbar navbar-expand-md navbar-light bg-white border-bottom py-4 px-5 fixed-top">
+    <nav th:fragment="mainNavbar (categories)"
+         class="navbar navbar-expand-md navbar-light bg-white border-bottom py-4 px-5 fixed-top">
     <a th:text="#{app.name}" href="/" class="navbar-brand ml-5 pl-4 font-weight-bold">Reverse Auction</a>
     <div class="navbar-collapse mr-auto" id="navbarForm">
         <ul class="navbar-nav ml-auto order-1">
@@ -82,10 +82,10 @@
                 <input name="auctionName" type="text" class="form-control border rounded-0 m-0 w-auto"
                        placeholder="Co dziś chcesz zaoferować?">
                 <span class="input-group-append p-0 m-0">
-                    <select class="selectpicker m-0 border p-0" name="categoryId">
+                    <select class="selectpicker m-0 border p-0" name="category_Id">
                         <option th:text="#{app.main.navbar.userbar.select.option}" value="0" selected>Wszędzie</option>
-                        <option th:each="category: ${subcategoriesMap}" th:value="${category.key.id}"
-                                th:text="${category.key.categoryName}"></option>
+                        <option th:each="category: ${categories}" th:value="${category.id}"
+                                th:text="${category.categoryName}"></option>
                     </select>
                 </span>
                 <span class="input-group-append p-0 m-0">
@@ -97,7 +97,7 @@
         </form>
     </div>
 </nav>
-<nav th:fragment="categoryNavbar (subcategoriesMap)" class="navbar navbar-expand navbar-light bg-white p-0">
+    <nav th:fragment="categoryNavbar (categories)" class="navbar navbar-expand navbar-light bg-white p-0">
     <div class="navbar m-0 p-0">
         <ul class="navbar-nav m-0">
             <li class="nav-item ml-3 p-0 border-right border-left dropdown" style="width: 200px">
@@ -114,25 +114,25 @@
                     <div class="categoryBox">
                         <div class="border-right p-0 m-0"
                              style="width: 198px">
-                            <div th:each="category:${subcategoriesMap}"
-                                 th:id="'category_' + ${category.key.id}"
+                            <div th:each="category:${categories}"
+                                 th:id="'category_' + ${category.id}"
                                  class="pt-3 pl-3 categoryItem">
-                                <a th:text="${category.key.categoryName}"
+                                <a th:text="${category.categoryName}"
                                    class="nav-link font-weight-bold"
-                                   th:href="@{/category/{category}(category = ${category.key.id})}">
+                                   th:href="@{/category/{category}(category = ${category.id})}">
                                 </a>
                             </div>
                         </div>
                         <div class="subcategoryBox">
-                            <div class="ile">
-                                <div th:each="category: ${subcategoriesMap}"
-                                     th:id="'subcategory_' + ${category.key.id}"
+                            <div>
+                                <div th:each="category: ${categories}"
+                                     th:id="'subcategory_' + ${category.id}"
                                      class="subcategoryItem px-4 py-2">
                                     <ul>
-                                        <li th:each="subcategory: ${category.value}"
+                                        <li th:each="subcategory: ${category.subcategories}"
                                             class="pt-3 pl-2 pr-5">
-                                            <a th:text="${subcategory.name}" class=""
-                                               th:href="@{/category/{category}/{subcategory}(category=${category.key.id},subcategory=${subcategory.id})}">
+                                            <a th:text="${subcategory.categoryName}" class=""
+                                               th:href="@{/category/{category}/(category=${category.id})}">
                                             </a>
                                         </li>
                                     </ul>

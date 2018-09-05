@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.LinkedHashSet;
 
 @RestController
-@RequestMapping("/categoryRest")
+@RequestMapping("/api/category")
 public class CategoryRestController {
 
     private final CategoryService categoryService;
@@ -22,10 +22,16 @@ public class CategoryRestController {
         return categoryService.getRootCategory();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/subcategory/{id}")
     @ResponseBody
     public LinkedHashSet<Category> getSubCategory(@PathVariable Long id) {
 
         return categoryService.getSubCategory(id);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Category getCategoryById(@PathVariable Long id) {
+        return categoryService.getById(id);
     }
 }

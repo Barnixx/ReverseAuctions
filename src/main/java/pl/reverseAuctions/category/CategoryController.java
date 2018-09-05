@@ -23,15 +23,15 @@ public class CategoryController {
 
     @GetMapping("{category_id}")
     public String getCategory(Model model, @PathVariable long category_id, @SortDefault("id") Pageable pageable) {
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
-        model.addAttribute("page", auctionService.getAuctionsByCategoryId(category_id, pageable));
+        model.addAttribute("categories", categoryService.getRootCategory());
+        model.addAttribute("page", auctionService.getAllAuctionsByCategory(category_id, pageable));
         return "auctionList";
     }
 
     @GetMapping("{category_id}/{subcategory_id}")
     public String getCategory(Model model, @PathVariable long category_id,
                               @PathVariable long subcategory_id, @SortDefault("id") Pageable pageable) {
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         model.addAttribute("page", auctionService.getAuctionsBySubcategoryId(subcategory_id, pageable));
         return "auctionList";
     }

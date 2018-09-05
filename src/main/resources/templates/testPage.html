@@ -6,7 +6,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="/layouts/mainPage"
-      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}">
+      th:with="pageTitle = #{app.main.page}, categories = ${categories}">
 <body>
 <section layout:fragment="content">
     <div class="x_title">

@@ -8,10 +8,10 @@
     <body>
         <div id="body">
             <div class="container-fluid border shadow-lg p-0">
-                <!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
-                <nav th:replace="fragments/mainNavbar::mainNavbar (subcategoriesMap = ${subcategoriesMap})">
+                <!--/*@thymesVar id="categories" type="java.util.LinkedHashSet"*/-->
+                <nav th:replace="fragments/mainNavbar::mainNavbar (categories = ${categories})">
                 </nav>
-                <nav th:replace="fragments/mainNavbar::categoryNavbar (subcategoriesMap = ${subcategoriesMap})">
+                <nav th:replace="fragments/mainNavbar::categoryNavbar (categories = ${categories})">
                 </nav>
             </div>
             <div layout:fragment="content">
@@ -21,5 +21,16 @@
             <div th:replace="fragments/footer::pagefooter">
             </div>
         </footer>
+        <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+
+        <script th:src="@{/webjars/bootstrap-select/1.13.1/dist/js/bootstrap-select.min.js}"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script th:src="@{/webjars/bootstrap-select/1.13.1/dist/js/i18n/defaults-pl_PL.min.js}"></script>
+        <script th:src="@{/js/bootstrap-select/bootstrap-select.min.js}"></script>
+
+
     </body>
 </html>

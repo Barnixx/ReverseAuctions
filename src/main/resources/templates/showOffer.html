@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<!--/*@thymesVar id="subcategoriesMap" type="java.util.Map"*/-->
+<!--/*@thymesVar id="categories" type="java.util.LinkedHashSet"*/-->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="/layouts/mainPage"
-      th:with="pageTitle = #{app.main.page}, subcategoriesMap = ${subcategoriesMap}, pageCSS = #{app.pageCSS.showOffer}">
+      th:with="pageTitle = #{app.main.page}, categories = ${categories}, pageCSS = #{app.pageCSS.showOffer}">
 <body>
 <section layout:fragment="content">
     <div class="p-3 bd-highlight"></div>

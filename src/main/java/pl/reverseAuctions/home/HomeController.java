@@ -19,11 +19,8 @@ public class HomeController {
     @GetMapping("/")
     public String homePage(Model model) {
 
-        model.addAttribute("subcategoriesMap", categoryService.getAllCategoriesWithSubcategories());
+        model.addAttribute("categories", categoryService.getRootCategory());
         return "home";
     }
-//    @GetMapping
-//    public String search(){
-//
-//    }
+
 }

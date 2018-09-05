@@ -18,12 +18,11 @@ import pl.reverseAuctions.category.Category;
 import pl.reverseAuctions.category.CategoryService;
 import pl.reverseAuctions.offer.Offer;
 import pl.reverseAuctions.offer.OfferService;
-import pl.reverseAuctions.subcategory.Subcategory;
 import pl.reverseAuctions.validator.UserRegisterValidationGroup;
 
 import javax.validation.groups.Default;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 @Log
 @Controller
 public class UserController {
@@ -65,9 +64,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    @ModelAttribute("subcategoriesMap")
-    private Map<Category, List<Subcategory>> categoryListMap() {
-        return categoryService.getAllCategoriesWithSubcategories();
+    @ModelAttribute("categories")
+    private LinkedHashSet<Category> categoryListMap() {
+        return categoryService.getRootCategory();
     }
 
     @GetMapping("/user")

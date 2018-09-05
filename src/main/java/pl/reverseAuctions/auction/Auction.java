@@ -5,8 +5,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.reverseAuctions.auction.attribiute.AttributeValue;
+import pl.reverseAuctions.category.Category;
 import pl.reverseAuctions.offer.Offer;
-import pl.reverseAuctions.subcategory.Subcategory;
 import pl.reverseAuctions.user.User;
 import pl.reverseAuctions.validator.FutureDate;
 import pl.reverseAuctions.validator.NewAuctionValidationGroup;
@@ -40,8 +40,9 @@ public class Auction {
     private String description;
 
     @NotNull(message = "Podkategoria nie może być pusta")
-    @ManyToOne(targetEntity = Subcategory.class)
-    private Subcategory subcategory;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @ManyToOne(targetEntity = User.class)
     private User user;

@@ -34,4 +34,5 @@ public interface AuctionService {
 
     Page<Auction> getAllByNameAndCategory_Id(String name, Long id, Pageable pageable);
 
+    public Page<Auction> getAllAuctionsByCategory(Long id, Pageable pageable);
 }

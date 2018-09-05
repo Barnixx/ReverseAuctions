@@ -1,13 +1,13 @@
 $(function () {
-    $("#category_select").change(function (event) {
+    $("#category_select").on('change', function (event) {
         var catId = $(this).val();
 
         console.log("event");
         console.log(catId);
+        $("#subcategory_select option").remove();
 
-
-        $.getJSON("http://localhost:8080/categoryRest/" + catId, function (data) {
-            $("#subcategory_select").html("");
+        $.getJSON("http://localhost:8080/api/category/subcategory/" + catId, function (data) {
+            $("#subcategory_select").append('<option value="' + catId + '">Kategoria Główna</option>');
             $.each(data, function () {
                 console.log($(this));
                 $("#subcategory_select").append('<option value="' + this.id + '" >' + this.name + '</option>');
@@ -16,18 +16,8 @@ $(function () {
                 $("#subcategory_select").selectpicker('refresh');
 
             })
-        })
-        // $.ajax({
-        //     url: 'http://localhost:8080/categoryRest/',
-        //     type: 'GET',
-        //     dataType: 'json',
-        //     success: function (json) {
-        //         $.each(json, function () {
-        //             $("#subcategory_select").append($('<option>').text($(this).name).attr('value', this.id));
-        //         });
-        //     }
-        // });
+        });
 
-
+        $("#subcategory_select").selectpicker('refresh');
     })
 });
