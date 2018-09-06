@@ -93,18 +93,19 @@ public class AuctionServiceImpl implements AuctionService {
     @Override
     public Page<Auction> getAllAuctionsByCategory(Long id, Pageable pageable) {
 
-        Set<Category> categories = new HashSet<>();
+//        Set<Category> categories = new HashSet<>();
+
+//        categories.add(category);
+//        if (category.getSubcategories() != null) {
+//            for (Category subcategory : category.getSubcategories()) {
+//                categories.add(subcategory);
+//                if (subcategory.getSubcategories() != null) {
+//                    categories.addAll(subcategory.getSubcategories());
+//                }
+//            }
+//        }
         Category category = categoryRepository.findById(id);
-        categories.add(category);
-        if (category.getSubcategories() != null) {
-            for (Category subcategory : category.getSubcategories()) {
-                categories.add(subcategory);
-                if (subcategory.getSubcategories() != null) {
-                    categories.addAll(subcategory.getSubcategories());
-                }
-            }
-        }
-        return auctionRepository.findDistinctByCategoryIn(categories, pageable);
+        return auctionRepository.findDistinctByCategoryInAndEndTimeGreaterThanEqual(createCategorySet(category), LocalDate.now(), pageable);
     }
 
     private Set<Category> createCategorySet(Category category) {

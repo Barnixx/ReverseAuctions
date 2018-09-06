@@ -33,7 +33,7 @@ public interface AuctionRepository extends JpaRepository<Auction, Long> {
 
     Page<Auction> findAllByNameContainingAndCategory_ParentCategory_Id(String name, Long id, Pageable pageable);
 
-    Page<Auction> findDistinctByCategoryIn(Set<Category> categories, Pageable pageable);
+    Page<Auction> findDistinctByCategoryInAndEndTimeGreaterThanEqual(Set<Category> categories, LocalDate localDate, Pageable pageable);
 
 }
 

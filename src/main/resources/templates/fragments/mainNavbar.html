@@ -132,7 +132,7 @@
                                         <li th:each="subcategory: ${category.subcategories}"
                                             class="pt-3 pl-2 pr-5">
                                             <a th:text="${subcategory.categoryName}" class=""
-                                               th:href="@{/category/{category}/(category=${category.id})}">
+                                               th:href="@{/category/{subcategory}(subcategory=${subcategory.id})}">
                                             </a>
                                         </li>
                                     </ul>
