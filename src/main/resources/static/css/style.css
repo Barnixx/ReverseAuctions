@@ -57,6 +57,7 @@ button.btn:nth-child(2) {
 
 #navbarForm > form > div > span * {
     border-radius: 0;
+    border-color: #dee2e6 !important;
 }
 
 #navbarForm > form > div > span {
@@ -65,7 +66,7 @@ button.btn:nth-child(2) {
 
 #navbarForm button[type="submit"] {
     width: 120px;
-
+    border: 0;
 }
 
 div.dropdown.bootstrap-select.m-0.border button.btn.dropdown-toggle.btn-light {

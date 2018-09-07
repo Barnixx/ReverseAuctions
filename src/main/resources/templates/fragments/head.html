@@ -5,42 +5,35 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap JS -->
+        <link th:rel="stylesheet" th:href="@{/css/reset.css}" type="text/css">
+
+        <!-- Bootstrap -->
         <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/1.14.3/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.1.3/dist/js/bootstrap.min.js}"></script>
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/dist/css/bootstrap.min.css}">
 
-        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
-                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                crossorigin="anonymous"></script>
-        <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
-                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                crossorigin="anonymous"></script>
+        <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.3.1/css/all.css}">
 
-        <!--Bootstrap Select JS-->
-        <script th:src="@{/js/bootstrap-select/bootstrap-select.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap-select/1.13.1/dist/js/bootstrap-select.min.js}"></script>
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap-select/1.13.1/dist/css/bootstrap-select.min.css}">
+
+        <script th:src="@{/webjars/momentjs/2.22.2/moment.js}"></script>
+        <script th:src="@{/webjars/tempusdominus-bootstrap-4/5.0.0/js/tempusdominus-bootstrap-4.min.js}"></script>
+        <link th:rel="stylesheet"
+              th:href="@{/webjars/tempusdominus-bootstrap-4/5.0.0/css/tempusdominus-bootstrap-4.min.css}">
+
+
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
         <script>tinymce.init({selector: 'textarea'});</script>
-        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+
         <script th:src="@{/js/script.js}"></script>
         <!--/*@thymesVar id="pageScript" type="java.lang.String"*/-->
         <script th:src="@{/js/{pageScript} (pageScript=${pageScript})}"></script>
 
-        <link th:rel="stylesheet" th:href="@{/css/reset.css}" type="text/css">
-        <!-- Bootstrap CSS -->
-        <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-        <!-- Font Awesome -->
-        <link th:rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.2.0/css/all.css}"
-              integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-              crossorigin="anonymous">
-        <!--Bootstrap Select CSS-->
-        <link th:rel="stylesheet" th:href="@{/css/bootstrap-select/bootstrap-select.min.css}">
-        <!--<link th:rel="stylesheet" th:href="@{/css/bootstrap-datetimepicker.min.css}">-->
-        <link th:rel="stylesheet"
-              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
+
         <!--/*@thymesVar id="pageCSS" type="java.lang.String"*/-->
         <link th:rel="stylesheet" th:href="@{/css/{pageCSS} (pageCSS=${pageCSS})}">
-
         <link th:rel="stylesheet" th:href='@{/css/style.css}' type="text/css">
         <title th:text="${pageTitle}">Page Title</title>
     </head>

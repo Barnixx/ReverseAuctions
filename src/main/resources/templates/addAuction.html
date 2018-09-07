@@ -39,7 +39,7 @@
                                         <select id="category_select" class="form-control selectpicker"
                                                 data-live-search="true">
                                             <option>Wybierz kategorie</option>
-                                            <option th:each="rootCategory:${rootCategories}"
+                                            <option th:each="rootCategory:${categories}"
                                                     th:text="${rootCategory.categoryName}"
                                                     th:value="${rootCategory.id}">
                                             </option>

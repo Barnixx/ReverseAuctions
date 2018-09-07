@@ -7,7 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.reverseAuctions.category.CategoryService;
@@ -18,7 +17,6 @@ import pl.reverseAuctions.user.UserService;
 import pl.reverseAuctions.validator.NewAuctionValidationGroup;
 
 import javax.validation.groups.Default;
-import java.util.List;
 
 
 @Controller
@@ -60,7 +58,6 @@ public class AuctionController {
 
         model.addAttribute("auction", new Auction());
         model.addAttribute("categories", categoryService.getRootCategory());
-        model.addAttribute("rootCategories", categoryService.getRootCategory());
         return "addAuction";
     }
 
@@ -68,10 +65,10 @@ public class AuctionController {
     public String saveAuction(Model model, @Validated({NewAuctionValidationGroup.class, Default.class}) Auction auction, BindingResult bindingResult,
                               @AuthenticationPrincipal CurrentUser currentUser) {
 
-        List<FieldError> errors = bindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
-        }
+//        List<FieldError> errors = bindingResult.getFieldErrors();
+//        for (FieldError error : errors) {
+//            System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
+//        }
 
         auction.setUser(currentUser.getUser());
         if (bindingResult.hasErrors()) {

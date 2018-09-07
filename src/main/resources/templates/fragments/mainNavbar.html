@@ -82,7 +82,7 @@
                 <input name="auctionName" type="text" class="form-control border rounded-0 m-0 w-auto"
                        placeholder="Co dziś chcesz zaoferować?">
                 <span class="input-group-append p-0 m-0">
-                    <select class="selectpicker m-0 border p-0" name="category_Id">
+                    <select class="selectpicker m-0 p-0" name="category_Id">
                         <option th:text="#{app.main.navbar.userbar.select.option}" value="0" selected>Wszędzie</option>
                         <option th:each="category: ${categories}" th:value="${category.id}"
                                 th:text="${category.categoryName}"></option>
@@ -119,6 +119,7 @@
                                  class="pt-3 pl-3 categoryItem">
                                 <a th:text="${category.categoryName}"
                                    class="nav-link font-weight-bold"
+                                   href="auctionList.html"
                                    th:href="@{/category/{category}(category = ${category.id})}">
                                 </a>
                             </div>
