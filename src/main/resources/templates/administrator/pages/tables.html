@@ -87,7 +87,7 @@
                                             </a></td>
                                             <td><a th:href="@{/api/category/{id} (id=${category.id})}"
                                                    class="btn btn-warning eBtn">Edytuj
-                                            </a> <a th:href="@{/adminSite/category/delete/{id} (id=${category.id})}"
+                                            </a> <a th:href="@{/admin/category/delete/{id} (id=${category.id})}"
                                                     class="btn btn-danger dBtn">Usuń</a>
                                             </a></td>
                                         </tr>
@@ -104,7 +104,7 @@
                 <!-- /.row -->
                 <div class="row">
                     <div class="edit-form">
-                        <form th:action="@{/adminSite/category/add}" th:method="post" th:object="${category}">
+                        <form th:action="@{/admin/category/add}" th:method="post" th:object="${category}">
                             <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
                                  aria-labelledby="editModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">

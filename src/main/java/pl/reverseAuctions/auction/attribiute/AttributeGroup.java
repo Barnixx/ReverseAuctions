@@ -10,7 +10,7 @@ import java.util.List;
 public class AttributeGroup {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "attribute_group_id")
     private Long id;
 

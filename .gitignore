@@ -25,3 +25,4 @@
 /.nb-gradle/
 
 /database/databaseModel.mwb.bak
+/src/main/resources/application-dev.properties

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class AttributeDictionary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "attribute_dictionary_value")

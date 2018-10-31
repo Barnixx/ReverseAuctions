@@ -8,7 +8,7 @@ import java.util.List;
 public class Attribute {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "attribute_id")
     private Long id;
 

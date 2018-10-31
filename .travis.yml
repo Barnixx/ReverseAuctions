@@ -1,0 +1,25 @@
+language: java
+jdk: oraclejdk8
+
+branches:
+  only:
+  - develop
+
+
+before_install:
+- chmod +x mvnw
+script:
+- ./mvnw clean install -B
+
+cache:
+  directories:
+  - $HOME/.m2
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app: revauct
+  on:
+    repo: Barnixx/ReverseAuctions
+    branch: develop

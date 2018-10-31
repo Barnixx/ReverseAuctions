@@ -14,7 +14,7 @@ import pl.reverseAuctions.category.CategoryService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/adminSite/category")
+@RequestMapping("/admin/category")
 public class AdminCategoryController {
 
     private final CategoryService categoryService;
@@ -29,7 +29,7 @@ public class AdminCategoryController {
         model.addAttribute("categoryList", categoryService.getAll());
         model.addAttribute("category", new Category());
         model.addAttribute("rootCategories", categoryService.getRootCategory());
-        return "admin/pages/tables";
+        return "administrator/pages/tables";
     }
 
     @GetMapping("/add")
@@ -38,7 +38,7 @@ public class AdminCategoryController {
 
         model.addAttribute("rootCategories", categoryService.getRootCategory());
 
-        return "admin/pages/categories/add-forms";
+        return "administrator/pages/categories/add-forms";
     }
 
     @PostMapping("/add")
@@ -46,15 +46,15 @@ public class AdminCategoryController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("rootCategories", categoryService.getRootCategory());
-            return "admin/pages/categories/add-forms";
+            return "administrator/pages/categories/add-forms";
         }
         categoryService.save(category);
-        return "redirect:/adminSite/category/";
+        return "redirect:/admin/category/";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteCategory(@PathVariable Long id) {
         categoryService.delete(id);
-        return "redirect:/adminSite/category/";
+        return "redirect:/admin/category/";
     }
 }
